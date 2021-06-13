@@ -9,7 +9,6 @@ using UnityEngine.Events;
 public class MovementSetup : MonoBehaviour
 {
     private LocomotionController lc;
-    private bool inMenu = false;
     private LocomotionTeleport TeleportController
     {
         get
