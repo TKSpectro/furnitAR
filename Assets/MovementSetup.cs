@@ -72,7 +72,7 @@ public class MovementSetup : MonoBehaviour
 
         // custom fix
         var targetHandlerPhysical = TeleportController.GetComponent<TeleportTargetHandlerPhysical>();
-        targetHandlerPhysical.AimCollisionLayerMask = LayerMask.GetMask("Default", "Water");
+        targetHandlerPhysical.AimCollisionLayerMask = LayerMask.GetMask("Ground");
     }
 
     /// <summary>
