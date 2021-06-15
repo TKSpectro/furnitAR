@@ -75,3 +75,6 @@ crashlytics-build.properties
 # Mac specific
 .DS_Store
 Desktop.ini
+
+Assets/Resources/
+OVRAssetBundles/

@@ -1094,6 +1094,7 @@ GameObject:
   - component: {fileID: 1497956453}
   - component: {fileID: 1497956452}
   - component: {fileID: 1497956454}
+  - component: {fileID: 1497956455}
   m_Layer: 0
   m_Name: Setup
   m_TagString: Untagged
@@ -1140,6 +1141,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 543242495}
+--- !u!114 &1497956455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497956451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e2b176d92b523441884d4fadbf69d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Notes: This script just works when being actually builded -> https://forum.unity.com/threads/can-we-reuse-user-s-vr-boundaries.818331/#post-5423601
+  wallMarker: {fileID: 5839767255777040293, guid: 99d52e6d5087ac446b4b5030a331d670, type: 3}
 --- !u!1 &1620661253
 GameObject:
   m_ObjectHideFlags: 0
