@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MenuTest : MonoBehaviour
 {
-    public GameObject menu;
+    public GameObject menuItems;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,18 +19,18 @@ public class MenuTest : MonoBehaviour
 
     public void OpenMenu()
     {
-        if (!menu.activeInHierarchy)
+        if (!menuItems.activeInHierarchy)
         {
-            menu.SetActive(true);
+            menuItems.SetActive(true);
             Debug.Log("Menu opened");
         }
     }
 
     public void CloseMenu()
     {
-        if (menu.activeInHierarchy)
+        if (menuItems.activeInHierarchy)
         {
-            menu.SetActive(false);
+            menuItems.SetActive(false);
             Debug.Log("Menu closed");
         }
     }
