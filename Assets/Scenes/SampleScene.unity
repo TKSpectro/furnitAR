@@ -1255,7 +1255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Notes: This script just works when being actually builded -> https://forum.unity.com/threads/can-we-reuse-user-s-vr-boundaries.818331/#post-5423601
-  wallMarker: {fileID: 5839767255777040293, guid: 99d52e6d5087ac446b4b5030a331d670, type: 3}
+  wallMarker: {fileID: 6110805684443137533, guid: 9e1967e5ffbbe3e4890a9a9a70eb4d85, type: 3}
 --- !u!1 &1620661253
 GameObject:
   m_ObjectHideFlags: 0
