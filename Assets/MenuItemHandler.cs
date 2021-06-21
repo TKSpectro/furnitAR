@@ -7,16 +7,16 @@ public class MenuItemHandler : MonoBehaviour
     public OVRHand hand;
     public float pinchTreshold = 0.7f;
 
-    float pinchStrength;
+    public float pinchStrength;
     bool isPinching = false;
 
-    bool isColliding = false;
+    public bool isColliding = false;
 
     void Update()
     {
         pinchStrength = hand.GetFingerPinchStrength(OVRHand.HandFinger.Index);
         isPinching = pinchStrength > pinchTreshold;
-        Debug.Log(isPinching);
+
         if (isColliding)
         {
             if (isPinching)

@@ -5,6 +5,10 @@ using UnityEngine;
 public class MenuTest : MonoBehaviour
 {
     public GameObject menuItems;
+    public OVRHand leftHand;
+
+    bool menuWasOpen = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +18,17 @@ public class MenuTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (!leftHand.IsTracked)
+        {
+            menuItems.SetActive(false);
+        }
+        else
+        {
+            if (!menuItems.activeInHierarchy && menuWasOpen)
+            {
+                menuItems.SetActive(true);
+            }
+        }
     }
 
     public void OpenMenu()
@@ -22,6 +36,7 @@ public class MenuTest : MonoBehaviour
         if (!menuItems.activeInHierarchy)
         {
             menuItems.SetActive(true);
+            menuWasOpen = true;
             Debug.Log("Menu opened");
         }
     }
@@ -31,6 +46,7 @@ public class MenuTest : MonoBehaviour
         if (menuItems.activeInHierarchy)
         {
             menuItems.SetActive(false);
+            menuWasOpen = false;
             Debug.Log("Menu closed");
         }
     }
