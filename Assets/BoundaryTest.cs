@@ -30,9 +30,15 @@ public class BoundaryTest : MonoBehaviour
         {
             // Get the boundary and instantiate cubes on every position
             Vector3[] boundary = OVRManager.boundary.GetGeometry(type);
+
+            int counter = 0;
+
             foreach (Vector3 pos in boundary)
             {
-                Instantiate(wallMarker, pos, Quaternion.identity);
+                if (counter % 2 == 0)
+                    Instantiate(wallMarker, pos, Quaternion.identity);
+
+                counter++;
             }
 
             isBoundaryFinished = true;

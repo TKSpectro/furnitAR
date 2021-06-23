@@ -583,10 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb1deedae4895b4ba588e3c056bd91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 624843374}
   pinchTreshold: 0.7
-  pinchStrength: 0
-  isColliding: 0
 --- !u!1001 &506632830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -665,17 +662,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1870938896605422, guid: 835e735ca71bf78459fb2cababd74112, type: 3}
   m_PrefabInstance: {fileID: 1810644887}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &624843374 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114428879332287356, guid: 835e735ca71bf78459fb2cababd74112, type: 3}
-  m_PrefabInstance: {fileID: 1810644887}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624843368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb7623a8f0b49cf4dbaa40aea4d4be64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &624843375 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4453513310108136, guid: 835e735ca71bf78459fb2cababd74112, type: 3}
@@ -1376,7 +1362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Notes: This script just works when being actually builded -> https://forum.unity.com/threads/can-we-reuse-user-s-vr-boundaries.818331/#post-5423601
-  wallMarker: {fileID: 6110805684443137533, guid: 9e1967e5ffbbe3e4890a9a9a70eb4d85, type: 3}
+  wallMarker: {fileID: 5839767255777040293, guid: 99d52e6d5087ac446b4b5030a331d670, type: 3}
 --- !u!1 &1500830054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,10 +1852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb1deedae4895b4ba588e3c056bd91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 624843374}
   pinchTreshold: 0.7
-  pinchStrength: 0
-  isColliding: 0
 --- !u!4 &1791347398 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4926590347505125201, guid: 522b89d0f09cc834db5f015f40e578f3, type: 3}
@@ -2075,10 +2058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb1deedae4895b4ba588e3c056bd91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 624843374}
   pinchTreshold: 0.7
-  pinchStrength: 0
-  isColliding: 0
 --- !u!1 &2047277902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,10 +2167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb1deedae4895b4ba588e3c056bd91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 624843374}
   pinchTreshold: 0.7
-  pinchStrength: 0
-  isColliding: 0
 --- !u!4 &2101002131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000014291504098, guid: 1b474618c4fc5f54e8a8b803c8352c7d, type: 3}
