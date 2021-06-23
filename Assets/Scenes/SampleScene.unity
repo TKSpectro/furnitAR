@@ -487,6 +487,7 @@ GameObject:
   - component: {fileID: 485182812}
   - component: {fileID: 485182811}
   - component: {fileID: 485182810}
+  - component: {fileID: 485182813}
   m_Layer: 6
   m_Name: MenuCube (2)
   m_TagString: Untagged
@@ -516,10 +517,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485182808}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &485182811
 MeshRenderer:
@@ -570,6 +571,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485182808}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &485182813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485182808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb1deedae4895b4ba588e3c056bd91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 624843374}
+  pinchTreshold: 0.7
+  pinchStrength: 0
+  isColliding: 0
 --- !u!1001 &506632830
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -675,8 +692,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.075
-  m_Center: {x: -0.13, y: -0.04, z: 0}
+  m_Radius: 0.03
+  m_Center: {x: -0.1, y: -0.08, z: -0.02}
 --- !u!54 &624843377
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1753,6 +1770,7 @@ GameObject:
   - component: {fileID: 1735436547}
   - component: {fileID: 1735436546}
   - component: {fileID: 1735436545}
+  - component: {fileID: 1735436548}
   m_Layer: 6
   m_Name: MenuCube (1)
   m_TagString: Untagged
@@ -1782,10 +1800,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735436543}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1735436546
 MeshRenderer:
@@ -1836,6 +1854,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735436543}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1735436548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735436543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb1deedae4895b4ba588e3c056bd91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 624843374}
+  pinchTreshold: 0.7
+  pinchStrength: 0
+  isColliding: 0
 --- !u!4 &1791347398 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4926590347505125201, guid: 522b89d0f09cc834db5f015f40e578f3, type: 3}
@@ -1945,6 +1979,7 @@ GameObject:
   - component: {fileID: 2001789185}
   - component: {fileID: 2001789184}
   - component: {fileID: 2001789183}
+  - component: {fileID: 2001789186}
   m_Layer: 6
   m_Name: MenuCube (3)
   m_TagString: Untagged
@@ -1974,10 +2009,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001789181}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2001789184
 MeshRenderer:
@@ -2028,6 +2063,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001789181}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2001789186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001789181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edb1deedae4895b4ba588e3c056bd91b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hand: {fileID: 624843374}
+  pinchTreshold: 0.7
+  pinchStrength: 0
+  isColliding: 0
 --- !u!1 &2047277902
 GameObject:
   m_ObjectHideFlags: 0
@@ -2137,7 +2188,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 624843374}
-  skeleton: {fileID: 0}
   pinchTreshold: 0.7
   pinchStrength: 0
   isColliding: 0
