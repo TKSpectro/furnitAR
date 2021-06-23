@@ -1,20 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using OculusSampleFramework;
 
 public class MenuItemHandler : MonoBehaviour
 {
-    public OVRHand hand;
+    private OVRHand rightHand;
     public float pinchTreshold = 0.7f;
 
-    public float pinchStrength;
+    float pinchStrength;
     bool isPinching = false;
 
-    public bool isColliding = false;
+    bool isColliding = false;
+
+    void Start()
+    {
+        rightHand = GameObject.FindObjectOfType<HandsManager>().RightHand;
+    }
 
     void Update()
     {
-        pinchStrength = hand.GetFingerPinchStrength(OVRHand.HandFinger.Index);
+        pinchStrength = rightHand.GetFingerPinchStrength(OVRHand.HandFinger.Index);
         isPinching = pinchStrength > pinchTreshold;
 
         if (isColliding)
