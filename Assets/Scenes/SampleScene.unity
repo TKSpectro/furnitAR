@@ -1302,6 +1302,7 @@ GameObject:
   - component: {fileID: 1497956452}
   - component: {fileID: 1497956454}
   - component: {fileID: 1497956455}
+  - component: {fileID: 1497956456}
   m_Layer: 0
   m_Name: Setup
   m_TagString: Untagged
@@ -1363,6 +1364,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Notes: This script just works when being actually builded -> https://forum.unity.com/threads/can-we-reuse-user-s-vr-boundaries.818331/#post-5423601
   wallMarker: {fileID: 5839767255777040293, guid: 99d52e6d5087ac446b4b5030a331d670, type: 3}
+--- !u!114 &1497956456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497956451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71b0879d3aca0004ab996f0182df4195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fingerTip: {fileID: 1600997394}
+  sphere: {fileID: 5242482823802906033, guid: 628d293240019034a8cbc9a707265e28, type: 3}
 --- !u!1 &1500830054
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,6 +1473,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1600997394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5242482823802906033, guid: 628d293240019034a8cbc9a707265e28, type: 3}
+  m_PrefabInstance: {fileID: 5242482824689659299}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1620661253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,6 +1737,88 @@ MonoBehaviour:
         - m_Target: {fileID: 1497956454}
           m_TargetAssemblyTypeName: MenuTest, Assembly-CSharp
           m_MethodName: CloseMenu
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: OK
+    fingerDatas:
+    - {x: 0.00000010377871, y: -0.0000000324263, z: -0.000000038993306}
+    - {x: 0.00000010377871, y: -0.0000000324263, z: -0.000000038993306}
+    - {x: 0.020069387, y: 0.011554071, z: 0.010496492}
+    - {x: 0.037735194, y: 0.023224568, z: 0.023510642}
+    - {x: 0.05589161, y: 0.04923984, z: 0.030626822}
+    - {x: 0.079935454, y: 0.07276875, z: 0.027423957}
+    - {x: 0.09599626, y: 0.007316463, z: 0.023550691}
+    - {x: 0.113349184, y: 0.04085963, z: 0.020055942}
+    - {x: 0.10853034, y: 0.06463559, z: 0.01858952}
+    - {x: 0.09564675, y: 0.0025431123, z: 0.001725863}
+    - {x: 0.13161917, y: 0.025700586, z: -0.0018001938}
+    - {x: 0.14671251, y: 0.04871086, z: -0.0031039945}
+    - {x: 0.088693865, y: 0.0065292874, z: -0.017465273}
+    - {x: 0.1259988, y: 0.013664036, z: -0.026304932}
+    - {x: 0.14523192, y: 0.031869274, z: -0.028495321}
+    - {x: 0.03407361, y: 0.009419843, z: -0.022998597}
+    - {x: 0.07789586, y: 0.013691173, z: -0.035054073}
+    - {x: 0.10419226, y: 0.014904022, z: -0.05089017}
+    - {x: 0.12051236, y: 0.02199716, z: -0.060682576}
+    - {x: 0.09616157, y: 0.08891392, z: 0.018354464}
+    - {x: 0.10127287, y: 0.0856761, z: 0.016163554}
+    - {x: 0.16084878, y: 0.069256075, z: -0.004745709}
+    - {x: 0.16326584, y: 0.04824889, z: -0.029443284}
+    - {x: 0.13929474, y: 0.029780842, z: -0.06897488}
+    onRecognized:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1497956456}
+          m_TargetAssemblyTypeName: FingerPositionTracking, Assembly-CSharp
+          m_MethodName: StartDraw
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: Drink
+    fingerDatas:
+    - {x: 0.00000010902225, y: 0.000000031000884, z: 0.00000003716241}
+    - {x: 0.00000010902225, y: 0.000000031000884, z: 0.00000003716241}
+    - {x: 0.02006927, y: 0.0115541, z: 0.0104965}
+    - {x: 0.033039846, y: 0.013152327, z: 0.031635687}
+    - {x: 0.052616693, y: 0.02318041, z: 0.055578794}
+    - {x: 0.07373168, y: 0.027895762, z: 0.081538215}
+    - {x: 0.09599626, y: 0.0073164343, z: 0.023550674}
+    - {x: 0.10625195, y: 0.043723352, z: 0.020750418}
+    - {x: 0.08233835, y: 0.048059978, z: 0.02068497}
+    - {x: 0.095646694, y: 0.0025431844, z: 0.0017259587}
+    - {x: 0.10478791, y: 0.044482794, z: 0.0012429067}
+    - {x: 0.07841058, y: 0.051789332, z: 0.0043788427}
+    - {x: 0.088693924, y: 0.0065293307, z: -0.017465157}
+    - {x: 0.10404779, y: 0.042375013, z: -0.017266518}
+    - {x: 0.0811687, y: 0.053293407, z: -0.009299025}
+    - {x: 0.03407364, y: 0.0094198445, z: -0.022998521}
+    - {x: 0.07789581, y: 0.013691202, z: -0.035054073}
+    - {x: 0.10437241, y: 0.01851861, z: -0.04986729}
+    - {x: 0.1200308, y: 0.028308615, z: -0.058324344}
+    - {x: 0.082974374, y: 0.030201051, z: 0.1042421}
+    - {x: 0.061109558, y: 0.040948413, z: 0.020543538}
+    - {x: 0.05761411, y: 0.038671874, z: 0.008859176}
+    - {x: 0.05870736, y: 0.047628924, z: -0.0016952662}
+    - {x: 0.13875176, y: 0.036250744, z: -0.0666057}
+    onRecognized:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1497956456}
+          m_TargetAssemblyTypeName: FingerPositionTracking, Assembly-CSharp
+          m_MethodName: StopDraw
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2173,3 +2275,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000014291504098, guid: 1b474618c4fc5f54e8a8b803c8352c7d, type: 3}
   m_PrefabInstance: {fileID: 172207708}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5242482824689659299
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5242482823802906033, guid: 628d293240019034a8cbc9a707265e28, type: 3}
+      propertyPath: m_Name
+      value: FingerTip
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242482823802906038, guid: 628d293240019034a8cbc9a707265e28, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242482823802906038, guid: 628d293240019034a8cbc9a707265e28, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242482823802906038, guid: 628d293240019034a8cbc9a707265e28, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242482823802906038, guid: 628d293240019034a8cbc9a707265e28, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242482823802906038, guid: 628d293240019034a8cbc9a707265e28, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242482823802906038, guid: 628d293240019034a8cbc9a707265e28, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242482823802906038, guid: 628d293240019034a8cbc9a707265e28, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242482823802906038, guid: 628d293240019034a8cbc9a707265e28, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242482823802906038, guid: 628d293240019034a8cbc9a707265e28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242482823802906038, guid: 628d293240019034a8cbc9a707265e28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5242482823802906038, guid: 628d293240019034a8cbc9a707265e28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 628d293240019034a8cbc9a707265e28, type: 3}
