@@ -2,19 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BuySelectedItems))]
 public class NewHandMenuTest : MonoBehaviour
 {
     bool isExpertModeEnabled = false;
-    // Start is called before the first frame update
-    void Start()
+
+
+    public void BuyNow()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        gameObject.GetComponent<BuySelectedItems>().BuyNow();
     }
 
     public void toggleExpertMode()

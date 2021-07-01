@@ -1,0 +1,4 @@
+Type,Name
+UnityEngine.GameObject,Cube
+UnityEngine.GameObject,Sphere
+UnityEngine.GameObject,Capsule
