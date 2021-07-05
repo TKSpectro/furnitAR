@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(BuySelectedItems))]
+[RequireComponent(typeof(ItemList))]
 public class NewHandMenuTest : MonoBehaviour
 {
     bool isExpertModeEnabled = false;
@@ -11,6 +12,11 @@ public class NewHandMenuTest : MonoBehaviour
     public void BuyNow()
     {
         gameObject.GetComponent<BuySelectedItems>().BuyNow();
+    }
+
+    public void UpdateItemList()
+    {
+        gameObject.GetComponent<ItemList>().UpdateItemList();
     }
 
     public void toggleExpertMode()
