@@ -5,26 +5,29 @@ using System.Collections;
 public class ObjectPosition : MonoBehaviour
 {
 
-    GameObject child;
+    public GameObject child;
     public bool hoverEntered = false;
-    // public bo+ol onHoverExited = false;
+    // public bool onHoverExited = false;
     public bool manipulationEnded = false;
-
+    float rotationZ, rotationY, rotationX;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        child = gameObject.transform.GetChild(0).gameObject;
-        Debug.Log(child.name);
-
+        //child = gameObject.transform.GetChild(0).gameObject;
+        rotationZ = gameObject.transform.eulerAngles.z;
+        rotationX = gameObject.transform.eulerAngles.x;
+        //rotationY = child.transform.eulerAngles.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        child.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.25f, gameObject.transform.position.z);
-        child.transform.localRotation = Quaternion.Euler(0, 0, gameObject.transform.eulerAngles.z);
+        // Dynamic calculation for the menu position  ( -0.12f of the X-Axis because the rotation axis is not in center and  )
+        child.transform.position = new Vector3(gameObject.transform.position.x - 0.12f, gameObject.transform.position.y + ((gameObject.transform.localScale.y / 2) + 0.3f), gameObject.transform.position.z);
+
+        // child.transform.localRotation = Quaternion.Euler(0, 90, 90);
         //if (onHoverEntered)
         //{
         //}
@@ -47,6 +50,7 @@ public class ObjectPosition : MonoBehaviour
     {
         if (!hoverEntered)
         {
+            // Show the menu
             child.SetActive(true);
             Debug.Log("onHoverEntered");
         }
@@ -59,11 +63,12 @@ public class ObjectPosition : MonoBehaviour
         if (hoverEntered)
         {
             Debug.Log("onHoverExited");
-            StartCoroutine(SetHoverToFalse());
+            // hide the menu after 3 second
+            StartCoroutine(StopHover());
         }
     }
 
-    IEnumerator SetHoverToFalse()
+    IEnumerator StopHover()
     {
         yield return new WaitForSecondsRealtime(3);
         child.SetActive(false);
@@ -75,11 +80,13 @@ public class ObjectPosition : MonoBehaviour
     {
         gameObject.GetComponent<Rigidbody>().useGravity = true;
     }
+
     public void EndManipulation()
     {
 
         child.SetActive(false);
-        gameObject.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        // correct the rotation of furniture  
+        gameObject.transform.localRotation = Quaternion.Euler(rotationX, gameObject.transform.localRotation.y, rotationZ);
         gameObject.GetComponent<ObjectManipulator>().AllowFarManipulation = true;
         Debug.Log("onManipulationEnded");
 
