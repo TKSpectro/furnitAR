@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 32054275}
   m_Layer: 0
-  m_Name: Schrank
+  m_Name: kitchen cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -882,6 +882,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 502416175}
+    - target: {fileID: 1976172375, guid: 691c3b3b049ea154fa8580da31265fde, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 502416174}
     - target: {fileID: 496850863456134994, guid: 691c3b3b049ea154fa8580da31265fde, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1005,7 +1009,7 @@ GameObject:
   - component: {fileID: 1082077482}
   - component: {fileID: 1082077481}
   m_Layer: 0
-  m_Name: Table
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1705,6 +1709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 502416175}
+  m_Camera: {fileID: 0}
 --- !u!114 &1583145546
 MonoBehaviour:
   m_ObjectHideFlags: 0
