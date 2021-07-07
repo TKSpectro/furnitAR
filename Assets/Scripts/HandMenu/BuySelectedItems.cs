@@ -25,13 +25,16 @@ public class BuySelectedItems : MonoBehaviour
         StreamWriter writer = new StreamWriter(filePath);
 
         //This is writing the line of the type, name, damage... etc... (I set these)
-        writer.WriteLine("Type,Name");
+        writer.WriteLine("Type, Name, Price");
         //This loops through everything in the inventory and sets the file to these.
         foreach (var item in items)
         {
             writer.WriteLine(item.GetType().ToString() +
-                            "," + item.name);
+                            "," + item.name +
+                            "," + item.GetComponent<FurnitureAttributes>().price.ToString());
         }
+
+        writer.WriteLine("ShoppinCartValue: " + GetComponent<MenuHelper>().CalculateShoppingCartValue(items).ToString());
 
         writer.Flush();
         //This closes the file

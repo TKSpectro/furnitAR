@@ -1,4 +1,11 @@
-Type,Name
-UnityEngine.GameObject,Cube
-UnityEngine.GameObject,Sphere
-UnityEngine.GameObject,Capsule
+Type, Name, Price
+UnityEngine.GameObject,PlacedItem0,126
+UnityEngine.GameObject,PlacedItem1,131
+UnityEngine.GameObject,PlacedItem2,136
+UnityEngine.GameObject,PlacedItem3,156
+UnityEngine.GameObject,PlacedItem4,73
+UnityEngine.GameObject,PlacedItem5,88
+UnityEngine.GameObject,PlacedItem6,169
+UnityEngine.GameObject,PlacedItem7,160
+UnityEngine.GameObject,PlacedItem8,181
+ShoppinCartValue: 1220

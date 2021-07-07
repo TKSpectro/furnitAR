@@ -20,4 +20,16 @@ public class MenuHelper : MonoBehaviour
 
         return items;
     }
+
+    public int CalculateShoppingCartValue(List<GameObject> placedItems)
+    {
+        int completePrice = 0;
+
+        foreach (GameObject item in placedItems)
+        {
+            completePrice += item.GetComponent<FurnitureAttributes>().price;
+        }
+
+        return completePrice;
+    }
 }
