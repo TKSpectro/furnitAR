@@ -26,11 +26,6 @@ public class NewHandMenuTest : MonoBehaviour
         }
     }
 
-    public void UpdateCollection()
-    {
-        GetComponent<ItemList>().itemList.GetComponent<GridObjectCollection>().UpdateCollection();
-    }
-
     public void ToggleShoppingCart()
     {
         // If the shoppingcart is not active, update its values (items and completePrice) and then show it
@@ -42,6 +37,10 @@ public class NewHandMenuTest : MonoBehaviour
 
             shoppingCart.transform.Find("ShoppingCartPrice").gameObject.GetComponent<TextMeshPro>().text = completePrice.ToString() + "€";
         }
+
+        // Hide the normal hand menu content
+        GameObject menuContent = shoppingCart.transform.parent.Find("MenuContent").gameObject;
+        menuContent.SetActive(!menuContent.activeInHierarchy);
 
         shoppingCart.SetActive(!shoppingCart.activeInHierarchy);
     }

@@ -10,20 +10,10 @@ public class ItemList : MonoBehaviour
     public GameObject itemPrefab;
     [SerializeField]
     public GameObject itemList;
-    public bool lul = false;
 
     private void Start()
     {
         UpdateItemList();
-    }
-
-    private void Update()
-    {
-        if (lul)
-        {
-            UpdateItemList();
-            lul = false;
-        }
     }
 
     public List<GameObject> UpdateItemList()
@@ -36,8 +26,6 @@ public class ItemList : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        // gridObjectCollection.UpdateCollection();
-
         List<GameObject> placedItems = gameObject.GetComponent<MenuHelper>().FindPlacedItems();
         foreach (GameObject item in placedItems)
         {
@@ -46,22 +34,16 @@ public class ItemList : MonoBehaviour
 
             newItem.transform.GetChild(1).GetComponent<TextMeshPro>().text = item.name;
             newItem.transform.GetChild(2).GetComponent<TextMeshPro>().text = item.GetComponent<FurnitureAttributes>().price.ToString() + ".00€";
+            // Create a minified version of the actual object as a icon
+            GameObject model = Instantiate(item, newItem.transform.GetChild(3));
+
+            // Reset position and rotation because we duplicate the actual model in the scene
+            model.transform.localRotation = new Quaternion();
+            model.transform.localPosition = new Vector3();
 
             // Set the itemList as its parent
-            // newItem.transform.parent = itemList.transform;
             newItem.SetActive(true);
         }
-
-        //Vector3 newPos = new Vector3(0.0f, -0.03f, 0.0f);
-        //foreach (Transform child in itemList.transform)
-        //{
-        //    child.position.Set(newPos.x, newPos.y, newPos.z);
-        //    newPos.y += 0.06f;
-        //}
-
-        // BaseObjectCollection baseObjectCollection = gridObjectCollection;
-        // baseObjectCollection.UpdateCollection();
-        // gridObjectCollection.UpdateCollection();
 
         IEnumerator coroutine = CustomUpdateCollection(gridObjectCollection);
         StartCoroutine(coroutine);

@@ -6,11 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(MenuHelper))]
 public class BuySelectedItems : MonoBehaviour
 {
-    private void Start()
-    {
-        BuyNow();
-    }
-
     public void BuyNow()
     {
         List<GameObject> placedItems = gameObject.GetComponent<MenuHelper>().FindPlacedItems();
@@ -27,7 +22,7 @@ public class BuySelectedItems : MonoBehaviour
         //This is writing the line of the type, name, damage... etc... (I set these)
         writer.WriteLine("Type, Name, Price");
         //This loops through everything in the inventory and sets the file to these.
-        foreach (var item in items)
+        foreach (GameObject item in items)
         {
             writer.WriteLine(item.GetType().ToString() +
                             "," + item.name +

@@ -7,30 +7,29 @@ public class GiveAllChildsARandomPrice : MonoBehaviour
     [SerializeField]
     bool setNumeratedName;
 
+    [SerializeField]
+    int rangeMin = 10;
+    [SerializeField]
+    int rangeMax = 100;
+
     public void GeneratePrices(int min, int max)
     {
-        GameObject placedItemsParent = GameObject.Find("PlacedItems");
+        int i = 1;
 
-        // Run through the childs of the parent and all the objects to our list
-        for (int i = 0; i < placedItemsParent.transform.childCount; ++i)
+        // Run through the childs of the gameobject
+        foreach (Transform child in gameObject.transform)
         {
             if (setNumeratedName)
             {
-                placedItemsParent.transform.GetChild(i).gameObject.name = "PlacedItem" + i;
+                child.gameObject.name = "PlacedItem " + i;
+                ++i;
             }
-            placedItemsParent.transform.GetChild(i).gameObject.AddComponent<FurnitureAttributes>().price = Random.Range(min, max);
+            child.gameObject.AddComponent<FurnitureAttributes>().price = Random.Range(min, max);
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        GeneratePrices(50, 200);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        GeneratePrices(rangeMin, rangeMax);
     }
 }
