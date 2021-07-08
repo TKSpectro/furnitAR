@@ -40,8 +40,12 @@ public class MenuManager : MonoBehaviour
                 showWardrobeMenu = !showWardrobeMenu;
                 wardrobeMenu.SetActive(false);
             }
-        }
 
+            Transform tableTransform = CalculateMenuPosition();
+
+            tableMenu.transform.position = tableTransform.position;
+            tableMenu.transform.rotation = tableTransform.rotation;
+        }
     }
     public void ToggleChairMenu()
     {
@@ -60,6 +64,11 @@ public class MenuManager : MonoBehaviour
                 showWardrobeMenu = !showWardrobeMenu;
                 wardrobeMenu.SetActive(false);
             }
+
+            Transform chairTransform = CalculateMenuPosition();
+
+            chairMenu.transform.position = chairTransform.position;
+            chairMenu.transform.rotation = chairTransform.rotation;
         }
     }
     public void ToggleWardrobeMenu()
@@ -79,6 +88,24 @@ public class MenuManager : MonoBehaviour
                 showChairMenu = !showChairMenu;
                 chairMenu.SetActive(false);
             }
+
+            Transform chairTransform = CalculateMenuPosition();
+
+            wardrobeMenu.transform.position = chairTransform.position;
+            wardrobeMenu.transform.rotation = chairTransform.rotation;
         }
+    }
+
+    private Transform CalculateMenuPosition()
+    {
+        Transform playerTransform = Camera.main.transform;
+        Quaternion playerRotation = Camera.main.transform.rotation;
+        playerRotation.x = 0;
+        playerRotation.z = 0;
+        playerTransform.rotation = playerRotation;
+        Vector3 spawnPos = Camera.main.transform.position + (playerTransform.forward * 0.5f);
+        playerTransform.position = spawnPos;
+
+        return playerTransform;
     }
 }
