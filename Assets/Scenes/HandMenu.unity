@@ -164,7 +164,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &33830587
 PrefabInstance:
@@ -529,6 +529,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daf098151ba6dfb4d80de80d08bbb7c8, type: 3}
+--- !u!1 &233929699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 233929701}
+  - component: {fileID: 233929700}
+  m_Layer: 0
+  m_Name: Boundary
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &233929700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233929699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f7b1dc9e16fe748929e00a8a342a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Notes: This script just works when the project is being build on the quest-> https://forum.unity.com/threads/can-we-reuse-user-s-vr-boundaries.818331/#post-5423601
+  outerBoundaryWallMarker: {fileID: 5839767255777040293, guid: 99d52e6d5087ac446b4b5030a331d670, type: 3}
+  playAreaWallMarker: {fileID: 1558195225916110416, guid: e867125d4422c3142bcadbc6578a50b5, type: 3}
+  matGround: {fileID: 2100000, guid: ae38e518d1b671f43868d3b05b81b687, type: 2}
+--- !u!4 &233929701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233929699}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!21 &237388410
 Material:
   serializedVersion: 6
@@ -3404,7 +3451,7 @@ Transform:
   - {fileID: 1441489559}
   - {fileID: 900192558}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1254161516
 GameObject:
@@ -3618,7 +3665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1405334468
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3694,7 +3741,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1441489558
 GameObject:
@@ -3875,7 +3922,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1499776801}
   - component: {fileID: 1499776804}
-  - component: {fileID: 1499776803}
   - component: {fileID: 1499776802}
   m_Layer: 0
   m_Name: Setup
@@ -3892,11 +3938,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499776800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.24905942, y: -0.44489324, z: 2.4104154}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1499776802
 MonoBehaviour:
@@ -3917,21 +3963,6 @@ MonoBehaviour:
   notRecognize:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1499776803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499776800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2f7b1dc9e16fe748929e00a8a342a2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Notes: This script just works when the project is being build on the quest-> https://forum.unity.com/threads/can-we-reuse-user-s-vr-boundaries.818331/#post-5423601
-  wallMarker: {fileID: 5839767255777040293, guid: 99d52e6d5087ac446b4b5030a331d670, type: 3}
-  wallMarker2: {fileID: 1558195225916110416, guid: e867125d4422c3142bcadbc6578a50b5, type: 3}
 --- !u!114 &1499776804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3939,7 +3970,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499776800}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e9f13967f9049841b99a57b61a47a22, type: 3}
   m_Name: 
@@ -4450,7 +4481,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1966752609 stripped
 Transform:
@@ -4571,7 +4602,7 @@ Transform:
   m_Children:
   - {fileID: 628209718}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145349566
 GameObject:
@@ -4759,5 +4790,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
