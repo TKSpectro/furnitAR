@@ -7,105 +7,61 @@ public class MenuManager : MonoBehaviour
     GameObject tableMenu;
     GameObject chairMenu;
     GameObject wardrobeMenu;
-    bool showTableMenu = false;
-    bool showChairMenu = false;
-    bool showWardrobeMenu = false;
     // Start is called before the first frame update
     void Start()
     {
         tableMenu = GameObject.Find("TableMenu");
         chairMenu = GameObject.Find("ChairMenu");
         wardrobeMenu = GameObject.Find("WardrobeMenu");
-        tableMenu.SetActive(showTableMenu);
-        chairMenu.SetActive(showChairMenu);
-        wardrobeMenu.SetActive(showWardrobeMenu);
-        Debug.Log("table menu:" + showTableMenu + "object: " + tableMenu);
+        tableMenu.SetActive(false);
+        chairMenu.SetActive(false);
+        wardrobeMenu.SetActive(false);
     }
 
     public void ToggleTableMenu()
     {
-        showTableMenu = !showTableMenu;
-        Debug.Log("table menu:" + showTableMenu + "object: " + tableMenu);
-        tableMenu.SetActive(showTableMenu);
+        tableMenu.SetActive(true);
+        chairMenu.SetActive(false);
+        wardrobeMenu.SetActive(false);
 
-        if(showTableMenu)
-        {
-            if (showChairMenu)
-            {
-                showChairMenu = !showChairMenu;
-                chairMenu.SetActive(false);
-            }
-            if (showWardrobeMenu)
-            {
-                showWardrobeMenu = !showWardrobeMenu;
-                wardrobeMenu.SetActive(false);
-            }
+        Transform tableTransform = CalculateMenuPosition();
 
-            Transform tableTransform = CalculateMenuPosition();
-
-            tableMenu.transform.position = tableTransform.position;
-            tableMenu.transform.rotation = tableTransform.rotation;
-        }
+        tableMenu.transform.position = tableTransform.position;
+        tableMenu.transform.rotation = tableTransform.rotation;
     }
     public void ToggleChairMenu()
     {
-        showChairMenu = !showChairMenu;
-        chairMenu.SetActive(showChairMenu);
+        chairMenu.SetActive(true);
+        tableMenu.SetActive(false);
+        wardrobeMenu.SetActive(false);
 
-        if (showChairMenu)
-        {
-            if (showTableMenu)
-            {
-                showTableMenu = !showTableMenu;
-                tableMenu.SetActive(false);
-            }
-            if (showWardrobeMenu)
-            {
-                showWardrobeMenu = !showWardrobeMenu;
-                wardrobeMenu.SetActive(false);
-            }
+        Transform chairTransform = CalculateMenuPosition();
 
-            Transform chairTransform = CalculateMenuPosition();
-
-            chairMenu.transform.position = chairTransform.position;
-            chairMenu.transform.rotation = chairTransform.rotation;
-        }
+        chairMenu.transform.position = chairTransform.position;
+        chairMenu.transform.rotation = chairTransform.rotation;
     }
     public void ToggleWardrobeMenu()
     {
-        showWardrobeMenu = !showWardrobeMenu;
-        wardrobeMenu.SetActive(showWardrobeMenu);
+        wardrobeMenu.SetActive(true);
+        tableMenu.SetActive(false);
+        chairMenu.SetActive(false);
 
-        if (showWardrobeMenu)
-        {
-            if (showTableMenu)
-            {
-                showTableMenu = !showTableMenu;
-                tableMenu.SetActive(false);
-            }
-            if (showChairMenu)
-            {
-                showChairMenu = !showChairMenu;
-                chairMenu.SetActive(false);
-            }
+        Transform chairTransform = CalculateMenuPosition();
 
-            Transform chairTransform = CalculateMenuPosition();
-
-            wardrobeMenu.transform.position = chairTransform.position;
-            wardrobeMenu.transform.rotation = chairTransform.rotation;
-        }
+        wardrobeMenu.transform.position = chairTransform.position;
+        wardrobeMenu.transform.rotation = chairTransform.rotation;
     }
 
     private Transform CalculateMenuPosition()
     {
-        Transform playerTransform = Camera.main.transform;
-        Quaternion playerRotation = Camera.main.transform.rotation;
-        playerRotation.x = 0;
-        playerRotation.z = 0;
-        playerTransform.rotation = playerRotation;
-        Vector3 spawnPos = Camera.main.transform.position + (playerTransform.forward * 0.5f);
-        playerTransform.position = spawnPos;
+        Transform menuTransform = Camera.main.transform;
+        Quaternion menuRotation = Camera.main.transform.rotation;
+        menuRotation.x = 0;
+        menuRotation.z = 0;
+        menuTransform.rotation = menuRotation;
+        Vector3 spawnPos = Camera.main.transform.position + (menuTransform.forward * 0.5f) - (menuTransform.right * 0.3f);
+        menuTransform.position = spawnPos;
 
-        return playerTransform;
+        return menuTransform;
     }
 }
