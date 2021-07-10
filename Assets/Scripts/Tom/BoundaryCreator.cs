@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoundaryCreator : MonoBehaviour
 {
     [TextArea]
-    public string Notes = "This script just works when the project is being build on the quest-> https://forum.unity.com/threads/can-we-reuse-user-s-vr-boundaries.818331/#post-5423601";
+    public string Notes = "Using the Boundary from the device just work when its being build on the quest-> https://forum.unity.com/threads/can-we-reuse-user-s-vr-boundaries.818331/#post-5423601";
 
     [SerializeField]
     GameObject outerBoundaryWallMarker;
@@ -13,38 +13,77 @@ public class BoundaryCreator : MonoBehaviour
     GameObject playAreaWallMarker;
 
     [SerializeField]
+    bool drawMarkers;
+
+    [SerializeField]
     Material matGround;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    bool drawWalls;
+    [SerializeField]
+    bool drawRoof;
+
+    [SerializeField]
+    float wallHeight = 3.0f;
+
     void Start()
     {
         Vector3[] debugBoundary = { new Vector3(-1.4f, -1.1f, -1.2f), new Vector3(0.1f, -1.1f, -2.8f), new Vector3(2f, -1.1f, -1.1f), new Vector3(0.4f, -1.1f, 0.6f) };
+        Vector3[] playAreaBoundary = GetPlayAreaBoundary();
 
-        Vector3[] playAreaBoundary = DrawPlayAreaBoundary();
-        Vector3[] outerBoundary = DrawOuterBoundary();
+        if (drawMarkers)
+        {
+            DrawBoundaryMarkers(GetPlayAreaBoundary(), GetOuterBoundary());
+        }
 
         if (playAreaBoundary.Length > 0)
         {
-            for (int i = 0; i < playAreaBoundary.Length; ++i)
-            {
-                playAreaBoundary[i].y = 0.0f;
-            }
+            Vector3[] resetedBoundary = ResetHeight(playAreaBoundary);
 
-            DrawMesh(playAreaBoundary);
+            DrawGround(resetedBoundary);
+            if (drawWalls)
+                DrawWalls(resetedBoundary);
+            if (drawRoof)
+                DrawRoof(resetedBoundary);
+
         }
         else
         {
-            for (int i = 0; i < debugBoundary.Length; ++i)
-            {
-                debugBoundary[i].y = 0.0f;
-            }
+            Vector3[] resetedBoundary = ResetHeight(debugBoundary);
 
-            DrawMesh(debugBoundary);
+            DrawGround(resetedBoundary);
+            if (drawWalls)
+                DrawWalls(resetedBoundary);
+            if (drawRoof)
+                DrawRoof(resetedBoundary);
+        }
+    }
+
+    Vector3[] ResetHeight(Vector3[] vertices)
+    {
+        for (int i = 0; i < vertices.Length; ++i)
+        {
+            vertices[i].y = vertices[i].y / 2;
+        }
+
+        return vertices;
+    }
+
+    void DrawBoundaryMarkers(Vector3[] playAreaBoundary, Vector3[] outerBoundary)
+    {
+        foreach (Vector3 pos in playAreaBoundary)
+        {
+            Instantiate(playAreaWallMarker, pos, Quaternion.identity);
+        }
+
+        foreach (Vector3 pos in outerBoundary)
+        {
+            Instantiate(outerBoundaryWallMarker, pos, Quaternion.identity);
         }
     }
 
     // PlayArea is the best possible Reactangle from all the points
-    Vector3[] DrawPlayAreaBoundary()
+    Vector3[] GetPlayAreaBoundary()
     {
         // If a boundary is found and it wasnt already drawn
         if (OVRManager.boundary.GetConfigured())
@@ -52,18 +91,13 @@ public class BoundaryCreator : MonoBehaviour
             // Get the boundary and instantiate cubes on every position
             Vector3[] boundary = OVRManager.boundary.GetGeometry(OVRBoundary.BoundaryType.PlayArea);
 
-            foreach (Vector3 pos in boundary)
-            {
-                Instantiate(playAreaWallMarker, pos, Quaternion.identity);
-            }
-
             return boundary;
         }
         return new Vector3[0];
     }
 
     // OuterBoundary are 256 point in counterclockwise order from the boundary
-    Vector3[] DrawOuterBoundary()
+    Vector3[] GetOuterBoundary()
     {
         // If a boundary is found and it wasnt already drawn
         if (OVRManager.boundary.GetConfigured())
@@ -71,23 +105,21 @@ public class BoundaryCreator : MonoBehaviour
             // Get the boundary and instantiate cubes on every position
             Vector3[] boundary = OVRManager.boundary.GetGeometry(OVRBoundary.BoundaryType.OuterBoundary);
 
-            foreach (Vector3 pos in boundary)
-            {
-                Instantiate(outerBoundaryWallMarker, pos, Quaternion.identity);
-            }
-
             return boundary;
         }
 
         return new Vector3[0];
     }
 
-    void DrawMesh(Vector3[] vertices)
+    void DrawGround(Vector3[] vertices)
     {
+        GameObject ground = Instantiate(new GameObject(), gameObject.transform);
+        ground.name = "ground";
+
         // Add the MeshFilter, MeshCollider and MeshRenderer as Components
-        MeshFilter meshFilter = gameObject.AddComponent<MeshFilter>();
-        MeshCollider meshCollider = gameObject.AddComponent<MeshCollider>();
-        Renderer renderer = gameObject.AddComponent<MeshRenderer>();
+        MeshFilter meshFilter = ground.AddComponent<MeshFilter>();
+        MeshCollider meshCollider = ground.AddComponent<MeshCollider>();
+        Renderer renderer = ground.AddComponent<MeshRenderer>();
 
         // Set the material of the mesh to the material given by unity
         renderer.material = matGround;
@@ -114,4 +146,97 @@ public class BoundaryCreator : MonoBehaviour
         // Need to recalculate the normals as they would be backwards
         mesh.RecalculateNormals();
     }
+
+    void DrawRoof(Vector3[] vertices)
+    {
+        // Start by adding the wallheight to the y value of the ground vertices
+        for (int i = 0; i < vertices.Length; ++i)
+        {
+            vertices[i].y += wallHeight;
+        }
+
+        GameObject roof = Instantiate(new GameObject(), gameObject.transform);
+        roof.name = "roof";
+
+        // Add the MeshFilter, MeshCollider and MeshRenderer as Components
+        MeshFilter meshFilter = roof.AddComponent<MeshFilter>();
+        MeshCollider meshCollider = roof.AddComponent<MeshCollider>();
+        Renderer renderer = roof.AddComponent<MeshRenderer>();
+
+        // Set the material of the mesh to the material given by unity
+        renderer.material = matGround;
+
+        Mesh mesh = new Mesh();
+        mesh.name = "ProceduralGeneratedMesh";
+        meshFilter.mesh = mesh;
+
+        // Use the vertices from the parameter to build a quad
+        mesh.vertices = vertices;
+
+        int[] triangles = new int[6];
+        triangles[0] = 1;
+        triangles[1] = 2;
+        triangles[2] = 0;
+        triangles[3] = 2;
+        triangles[4] = 3;
+        triangles[5] = 0;
+
+        mesh.triangles = triangles;
+
+        // Set the MeshCollider to our generated mesh
+        meshCollider.sharedMesh = mesh;
+        // Need to recalculate the normals as they would be backwards
+        mesh.RecalculateNormals();
+    }
+
+    void DrawWalls(Vector3[] vertices)
+    {
+        // We always have 4 walls so we just loop through 4 time and create them procedural
+        for (int i = 0; i < 4; ++i)
+        {
+            Vector3 lowLeft = vertices[i % 4];
+            Vector3 lowRight = vertices[(i + 1) % 4];
+            Vector3 topLeft = new Vector3(lowLeft.x, lowLeft.y + wallHeight, lowLeft.z);
+            Vector3 topRight = new Vector3(lowRight.x, lowRight.y + wallHeight, lowRight.z);
+
+            Vector3[] wallVertices = { lowLeft, lowRight, topRight, topLeft };
+
+            GameObject currentWall = Instantiate(new GameObject(), gameObject.transform);
+            currentWall.name = "wall" + i;
+
+            // Add the MeshFilter, MeshCollider and MeshRenderer as Components
+            MeshFilter meshFilter = currentWall.AddComponent<MeshFilter>();
+            MeshCollider meshCollider = currentWall.AddComponent<MeshCollider>();
+            Renderer renderer = currentWall.AddComponent<MeshRenderer>();
+
+            // Set the material of the mesh to the material given by unity
+            renderer.material = matGround;
+
+            Mesh mesh = new Mesh();
+            mesh.name = "ProceduralGeneratedMesh";
+            meshFilter.mesh = mesh;
+
+            // Use the vertices from the parameter to build a quad
+            mesh.vertices = wallVertices;
+
+            int[] triangles = new int[6];
+
+            // Basically the same as the ground but inverted each triangle so it looks into the inside
+            triangles[0] = 1;
+            triangles[1] = 2;
+            triangles[2] = 0;
+            triangles[3] = 2;
+            triangles[4] = 3;
+            triangles[5] = 0;
+
+            mesh.triangles = triangles;
+
+            // Set the MeshCollider to our generated mesh
+            meshCollider.sharedMesh = mesh;
+            // Need to recalculate the normals as they would be backwards
+            mesh.RecalculateNormals();
+
+        }
+    }
+
 }

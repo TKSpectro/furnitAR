@@ -382,53 +382,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 173.70616, y: 220.88239, z: 102.86742}
   m_Center: {x: -0.000007629394, y: 0.000022888182, z: 0.000019073486}
---- !u!1 &233929699
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 233929701}
-  - component: {fileID: 233929700}
-  m_Layer: 0
-  m_Name: Boundary
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &233929700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233929699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2f7b1dc9e16fe748929e00a8a342a2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Notes: This script just works when the project is being build on the quest-> https://forum.unity.com/threads/can-we-reuse-user-s-vr-boundaries.818331/#post-5423601
-  outerBoundaryWallMarker: {fileID: 5839767255777040293, guid: 99d52e6d5087ac446b4b5030a331d670, type: 3}
-  playAreaWallMarker: {fileID: 1558195225916110416, guid: e867125d4422c3142bcadbc6578a50b5, type: 3}
-  matGround: {fileID: 2100000, guid: ae38e518d1b671f43868d3b05b81b687, type: 2}
---- !u!4 &233929701
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233929699}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &310025128 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7998692657130722838, guid: 8cdf3f7a4e7668f44aa5046815463b34, type: 3}
@@ -2803,6 +2756,63 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &2459705798365394429
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2459705798280400408, guid: 177fa174ddad6e34387f0c17ef5087c6, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459705798280400408, guid: 177fa174ddad6e34387f0c17ef5087c6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459705798280400408, guid: 177fa174ddad6e34387f0c17ef5087c6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459705798280400408, guid: 177fa174ddad6e34387f0c17ef5087c6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459705798280400408, guid: 177fa174ddad6e34387f0c17ef5087c6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459705798280400408, guid: 177fa174ddad6e34387f0c17ef5087c6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459705798280400408, guid: 177fa174ddad6e34387f0c17ef5087c6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459705798280400408, guid: 177fa174ddad6e34387f0c17ef5087c6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459705798280400408, guid: 177fa174ddad6e34387f0c17ef5087c6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459705798280400408, guid: 177fa174ddad6e34387f0c17ef5087c6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459705798280400408, guid: 177fa174ddad6e34387f0c17ef5087c6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2459705798280400414, guid: 177fa174ddad6e34387f0c17ef5087c6, type: 3}
+      propertyPath: m_Name
+      value: Boundary
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 177fa174ddad6e34387f0c17ef5087c6, type: 3}
 --- !u!1001 &5325845888089616703
 PrefabInstance:
   m_ObjectHideFlags: 0
