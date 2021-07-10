@@ -32,10 +32,10 @@ public class ItemList : MonoBehaviour
             // Instantiate the itemPrefab
             GameObject newItem = Instantiate(itemPrefab, itemList.transform);
 
-            newItem.transform.GetChild(1).GetComponent<TextMeshPro>().text = item.name;
-            newItem.transform.GetChild(2).GetComponent<TextMeshPro>().text = item.GetComponent<FurnitureAttributes>().price.ToString() + ".00€";
+            newItem.transform.Find("Name").GetComponent<TextMeshPro>().text = item.name;
+            newItem.transform.Find("Price").GetComponent<TextMeshPro>().text = item.GetComponent<FurnitureAttributes>().price.ToString() + ".00€";
             // Create a minified version of the actual object as a icon
-            GameObject model = Instantiate(item, newItem.transform.GetChild(3));
+            GameObject model = Instantiate(item, newItem.transform.Find("Model"));
 
             // Reset position and rotation because we duplicate the actual model in the scene
             // Dont reset rotation because the furniture prefabs are rotated randomly, so we need to keep the rotations
