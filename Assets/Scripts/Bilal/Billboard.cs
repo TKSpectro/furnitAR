@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Billboard : MonoBehaviour
 {
-    public Transform target;
-    public Camera m_Camera;
+    //public Transform target;
+    public Camera camera;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +15,13 @@ public class Billboard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //gameObject.transform.localRotation = Quaternion.Euler(target.localEulerAngles.x, target.localEulerAngles.y, 0);
-        // rotate the menu to face the user
-        gameObject.transform.LookAt(transform.position + m_Camera.transform.rotation * Vector3.forward,
-            m_Camera.transform.rotation * Vector3.up);
+
+        // Billboard follow the camera postition
+        gameObject.transform.LookAt(transform.position + camera.transform.rotation * Vector3.forward,
+            camera.transform.rotation * Vector3.up);
+
+        //transform.LookAt(target.position);
+        gameObject.transform.localRotation = Quaternion.Euler(0, gameObject.transform.localEulerAngles.y, 0);
+
     }
 }
