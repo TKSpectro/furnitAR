@@ -38,7 +38,8 @@ public class ItemList : MonoBehaviour
             GameObject model = Instantiate(item, newItem.transform.GetChild(3));
 
             // Reset position and rotation because we duplicate the actual model in the scene
-            model.transform.localRotation = new Quaternion();
+            // Dont reset rotation because the furniture prefabs are rotated randomly, so we need to keep the rotations
+            // model.transform.localRotation = new Quaternion();
             model.transform.localPosition = new Vector3();
 
             // Set the itemList as its parent

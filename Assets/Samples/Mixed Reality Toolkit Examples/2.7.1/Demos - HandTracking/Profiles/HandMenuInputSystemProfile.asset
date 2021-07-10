@@ -135,6 +135,6 @@ MonoBehaviour:
   gesturesProfile: {fileID: 11400000, guid: bd7829a9b29409045a745b5a18299291, type: 2}
   speechCommandsProfile: {fileID: 11400000, guid: a8a46624b341bb74ba5a063386314675, type: 2}
   enableControllerMapping: 1
-  controllerMappingProfile: {fileID: 11400000, guid: 39ded1fd0711a0c448413d0e1ec4f7f3, type: 2}
+  controllerMappingProfile: {fileID: 11400000, guid: 33bd128308d4268448088929116a31c3, type: 2}
   controllerVisualizationProfile: {fileID: 11400000, guid: 345c06fdf3732db46b96299bd3cba653, type: 2}
   handTrackingProfile: {fileID: 11400000, guid: 7f1e3cd673742f94ca860ac7ae733024, type: 2}
