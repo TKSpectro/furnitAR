@@ -8,7 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(BuySelectedItems))]
 [RequireComponent(typeof(ItemList))]
 [RequireComponent(typeof(MenuHelper))]
-public class NewHandMenuTest : MonoBehaviour
+public class HandMenuHandler : MonoBehaviour
 {
     bool isExpertModeEnabled = false;
 
