@@ -20,7 +20,7 @@ public class MaterialsHelper : MonoBehaviour
 
     public void ScaleSphere()
     {
-        Debug.Log("test");
+
         transform.localScale = new Vector3(transform.localScale.x + 0.10f, transform.localScale.y + 0.10f, transform.localScale.z + 0.10f);
     }
 

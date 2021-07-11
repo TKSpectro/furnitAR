@@ -6,6 +6,10 @@ public class FurnitureControl : MonoBehaviour
 {
 
     public GameObject child;
+    //public GameObject Materials;
+    public Material[] wardrobes;
+    public Material[] chairs;
+    public Material[] tables;
     // Start is called before the first frame update
     void Start()
     {
