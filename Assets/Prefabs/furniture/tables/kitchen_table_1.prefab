@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 1706182573167312723}
   m_Layer: 0
   m_Name: kitchen_table_1
-  m_TagString: Untagged
+  m_TagString: table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

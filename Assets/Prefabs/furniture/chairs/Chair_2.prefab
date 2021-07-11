@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5780632755303858598}
   m_Layer: 0
   m_Name: Chair_2
-  m_TagString: Untagged
+  m_TagString: chair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
