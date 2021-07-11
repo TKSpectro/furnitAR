@@ -26,9 +26,13 @@ public class BoundaryCreator : MonoBehaviour
     [SerializeField]
     float wallHeight = 3.0f;
 
+    [Tooltip("The height offset is really weird. It changes quite randomly after device restarts. Values that worked for me: '0.55','-0.55','0'.")]
+    [SerializeField]
+    float heightOffset = 0.0f;
+
     void Start()
     {
-        Vector3[] debugBoundary = { new Vector3(-1.4f, -1.1f, -1.2f), new Vector3(0.1f, -1.1f, -2.8f), new Vector3(2f, -1.1f, -1.1f), new Vector3(0.4f, -1.1f, 0.6f) };
+        Vector3[] debugBoundary = { new Vector3(-2.0f, -1.1f, 2.0f), new Vector3(-2.0f, -1.1f, -2.0f), new Vector3(2.0f, -1.1f, -2.0f), new Vector3(2.0f, -1.1f, 2.0f) };
         Vector3[] playAreaBoundary = GetPlayAreaBoundary();
 
         if (drawMarkers)
@@ -63,7 +67,9 @@ public class BoundaryCreator : MonoBehaviour
     {
         for (int i = 0; i < vertices.Length; ++i)
         {
-            vertices[i].y = vertices[i].y / 2;
+            vertices[i].y = 0.0f + heightOffset;
+            //vertices[i].y = vertices[i].y / 2;
+            //vertices[i].y = 0.0f + -(vertices[i].y / 2);
         }
 
         return vertices;

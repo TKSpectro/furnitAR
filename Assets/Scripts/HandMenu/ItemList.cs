@@ -11,11 +11,6 @@ public class ItemList : MonoBehaviour
     [SerializeField]
     public GameObject itemList;
 
-    private void Start()
-    {
-        UpdateItemList();
-    }
-
     public List<GameObject> UpdateItemList()
     {
         GridObjectCollection gridObjectCollection = itemList.GetComponent<GridObjectCollection>();
