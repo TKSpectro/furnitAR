@@ -48,6 +48,10 @@ MonoBehaviour:
   playAreaWallMarker: {fileID: 1558195225916110416, guid: e867125d4422c3142bcadbc6578a50b5, type: 3}
   drawMarkers: 0
   matGround: {fileID: 2100000, guid: ae38e518d1b671f43868d3b05b81b687, type: 2}
+  matWalls: {fileID: 2100000, guid: b37273e64755a4d48ab3bdb76805a16e, type: 2}
+  matCeiling: {fileID: 2100000, guid: a33fa1e5eaa7a80419e68571d73951e2, type: 2}
+  matUV: {fileID: 2100000, guid: f7ce24cb5e2dd044caf6203a1cb91c9e, type: 2}
   drawWalls: 1
   drawRoof: 1
   wallHeight: 2.55
+  heightOffset: 0

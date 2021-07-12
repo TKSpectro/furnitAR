@@ -17,6 +17,12 @@ public class BoundaryCreator : MonoBehaviour
 
     [SerializeField]
     Material matGround;
+    [SerializeField]
+    Material matWalls;
+    [SerializeField]
+    Material matCeiling;
+    [SerializeField]
+    Material matUV;
 
     [SerializeField]
     bool drawWalls;
@@ -137,6 +143,9 @@ public class BoundaryCreator : MonoBehaviour
         // Use the vertices from the parameter to build a quad
         mesh.vertices = vertices;
 
+        Vector2[] uv = { new Vector2(0.0f, 0.0f), new Vector2(0.0f, 1.0f), new Vector2(1.0f, 1.0f), new Vector2(1.0f, 0.0f) };
+        mesh.uv = uv;
+
         int[] triangles = new int[6];
         triangles[0] = 0;
         triangles[1] = 2;
@@ -170,7 +179,7 @@ public class BoundaryCreator : MonoBehaviour
         Renderer renderer = roof.AddComponent<MeshRenderer>();
 
         // Set the material of the mesh to the material given by unity
-        renderer.material = matGround;
+        renderer.material = matCeiling;
 
         Mesh mesh = new Mesh();
         mesh.name = "ProceduralGeneratedMesh";
@@ -178,6 +187,9 @@ public class BoundaryCreator : MonoBehaviour
 
         // Use the vertices from the parameter to build a quad
         mesh.vertices = vertices;
+
+        Vector2[] uv = { new Vector2(0.0f, 0.0f), new Vector2(0.0f, 1.0f), new Vector2(1.0f, 1.0f), new Vector2(1.0f, 0.0f) };
+        mesh.uv = uv;
 
         int[] triangles = new int[6];
         triangles[0] = 1;
@@ -216,7 +228,7 @@ public class BoundaryCreator : MonoBehaviour
             Renderer renderer = currentWall.AddComponent<MeshRenderer>();
 
             // Set the material of the mesh to the material given by unity
-            renderer.material = matGround;
+            renderer.material = matWalls;
 
             Mesh mesh = new Mesh();
             mesh.name = "ProceduralGeneratedMesh";
@@ -224,6 +236,9 @@ public class BoundaryCreator : MonoBehaviour
 
             // Use the vertices from the parameter to build a quad
             mesh.vertices = wallVertices;
+
+            Vector2[] uv = { new Vector2(0.0f, 0.0f), new Vector2(0.0f, 1.0f), new Vector2(1.0f, 1.0f), new Vector2(1.0f, 0.0f) };
+            mesh.uv = uv;
 
             int[] triangles = new int[6];
 
