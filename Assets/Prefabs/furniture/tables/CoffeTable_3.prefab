@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 799633418156196884}
   - component: {fileID: 799633418153344886}
   - component: {fileID: 799633418154350068}
-  - component: {fileID: 1321770146311997486}
+  - component: {fileID: 2280125315037881322}
   m_Layer: 0
   m_Name: CoffeTable_3
   m_TagString: table
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1321770146311997486
+--- !u!65 &2280125315037881322
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,5 +93,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.021071436, y: 0.021340199, z: 0.4084515}
-  m_Center: {x: -4.6566126e-10, y: -9.3132246e-10, z: 0.2030817}
+  m_Size: {x: 0.0077275275, y: 0.007826091, z: 0.14979142}
+  m_Center: {x: -2.3283063e-10, y: -4.6566123e-10, z: 0.07447615}
