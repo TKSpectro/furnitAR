@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class NearMenu : MonoBehaviour
 {
-    public GameObject obj;
-    Material material;
+    private GameObject furniturePiece;
     public GameObject materialsCollection;
-    int counter = 0;
+    private int counter = 0;
+    private Material material;
 
     // Start is called before the first frame update
     void Start()
@@ -23,16 +23,19 @@ public class NearMenu : MonoBehaviour
 
     public void DeleteFurniture()
     {
-        Destroy(obj);
+        Destroy(furniturePiece);
         gameObject.SetActive(false);
     }
 
     public void ShowMaterialSpheres()
     {
+
         materialsCollection.transform.position = new Vector3(transform.position.x, transform.position.y + 0.25f
             , transform.position.z);
-        if (obj.tag == "wardrobe")
+
+        if (furniturePiece.tag == "wardrobe")
         {
+            Debug.Log("wardrobe");
             foreach (Transform spher in materialsCollection.transform)
             {
                 spher.GetComponent<MeshRenderer>().material = transform.parent.GetComponent<FurnitureControl>().wardrobes[counter];
@@ -40,7 +43,7 @@ public class NearMenu : MonoBehaviour
             }
 
         }
-        else if (obj.tag == "table")
+        else if (furniturePiece.tag == "table")
         {
             foreach (Transform spher in materialsCollection.transform)
             {
@@ -51,6 +54,7 @@ public class NearMenu : MonoBehaviour
         }
         else
         {
+            Debug.Log("else");
             foreach (Transform spher in materialsCollection.transform)
             {
                 spher.GetComponent<MeshRenderer>().material = transform.parent.GetComponent<FurnitureControl>().chairs[counter];
@@ -59,29 +63,31 @@ public class NearMenu : MonoBehaviour
         }
         materialsCollection.SetActive(true);
         counter = 0;
-        //StartCoroutine(SetMaterialSpheresToActive());
+        //StartCoroutine(HideSpheres());
 
-        //gameObject.SetActive(false);
     }
 
-    IEnumerator SetMaterialSpheresToActive()
+    IEnumerator HideSpheres()
     {
-        yield return new WaitForSecondsRealtime(2);
-        materialsCollection.SetActive(true);
+        Debug.Log("HideSpheres");
+        yield return new WaitForSecondsRealtime(5);
+        materialsCollection.SetActive(false);
     }
-
 
     public void ChangeMaterial()
     {
 
         //  Debug.Log("Change Materials");
-        obj = obj.transform.GetChild(0).gameObject;
-
-        obj.GetComponent<MeshRenderer>().material = material;
+        furniturePiece = furniturePiece.transform.GetChild(0).gameObject;
+        furniturePiece.GetComponent<MeshRenderer>().material = material;
     }
 
     public void SetMaterial(Material mat)
     {
         material = mat;
+    }
+    public void SetFurniture(GameObject obj)
+    {
+        furniturePiece = obj;
     }
 }
