@@ -29,6 +29,7 @@ public class BuySelectedItems : MonoBehaviour
             }
 
             writer.WriteLine("ShoppinCartValue: " + GetComponent<MenuHelper>().CalculateShoppingCartValue(items).ToString());
+            writer.WriteLine("\n");
 
             writer.Flush();
             // This closes the file
