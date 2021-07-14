@@ -54,7 +54,7 @@ public class NearMenu : MonoBehaviour
         }
         else
         {
-            Debug.Log("else");
+
             foreach (Transform spher in materialsCollection.transform)
             {
                 spher.GetComponent<MeshRenderer>().material = transform.parent.GetComponent<FurnitureControl>().chairs[counter];
@@ -63,23 +63,27 @@ public class NearMenu : MonoBehaviour
         }
         materialsCollection.SetActive(true);
         counter = 0;
-        //StartCoroutine(HideSpheres());
 
     }
 
-    IEnumerator HideSpheres()
-    {
-        Debug.Log("HideSpheres");
-        yield return new WaitForSecondsRealtime(5);
-        materialsCollection.SetActive(false);
-    }
+
 
     public void ChangeMaterial()
     {
 
         //  Debug.Log("Change Materials");
-        furniturePiece = furniturePiece.transform.GetChild(0).gameObject;
-        furniturePiece.GetComponent<MeshRenderer>().material = material;
+        //furniturePiece = furniturePiece.transform.GetChild(0).gameObject;
+        Debug.Log("child = ", furniturePiece.transform.GetChild(0).gameObject);
+
+        if (furniturePiece.transform.GetComponent<MeshRenderer>())
+        {
+            furniturePiece.transform.GetComponent<MeshRenderer>().material = material;
+        }
+        else
+        {
+            furniturePiece.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = material;
+
+        }
     }
 
     public void SetMaterial(Material mat)

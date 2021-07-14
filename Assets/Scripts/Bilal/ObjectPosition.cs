@@ -8,7 +8,6 @@ using Microsoft.MixedReality.Toolkit.UI.BoundsControl;
 [RequireComponent(typeof(ConstraintManager))]
 [RequireComponent(typeof(MinMaxScaleConstraint))]
 [RequireComponent(typeof(CursorContextObjectManipulator))]
-[RequireComponent(typeof(RotationAxisConstraint))]
 
 public class ObjectPosition : MonoBehaviour
 {
@@ -41,6 +40,7 @@ public class ObjectPosition : MonoBehaviour
 
     public void OnHover()
     {
+
         if (!hoverEntered)
         {
 
@@ -102,10 +102,6 @@ public class ObjectPosition : MonoBehaviour
 
         // set furniture piece of the ground
         transform.position = new Vector3(transform.position.x, height + groundOffset, transform.position.z);
-
-        //gameObject.transform.eulerAngles = new Vector3(rotationX, gameObject.transform.eulerAngles.y, gameObject.transform.eulerAngles.z);
-
-        //transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
 
     }
 
