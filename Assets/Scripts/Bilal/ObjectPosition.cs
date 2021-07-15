@@ -11,8 +11,19 @@ using Microsoft.MixedReality.Toolkit.UI.BoundsControl;
 
 public class ObjectPosition : MonoBehaviour
 {
+    // Daniel Furniture Selection Menu
+    private Transform prefab;
+    private GameObject spawnManager;
+    private GameObject menu;
+    SpawnManager spawnScript;
+    bool alreadySpawned = false;
+    bool outsideOfMenu = true;
+    bool isHovering = false;
+    private GameObject furnitures;
+    private bool isClone = false;
 
-    GameObject menu;
+    // Bilal near menu for manipulation
+    GameObject nearMenu;
     public bool hoverEntered = false;
     public bool startManipulation = false;
     public bool manipulationEnded = false;
@@ -25,10 +36,28 @@ public class ObjectPosition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ground = GameObject.Find("Ground");
-        menu = gameObject.transform.parent.GetComponent<FurnitureControl>().child;
-        rotationY = gameObject.transform.eulerAngles.y;
-        rotationX = gameObject.transform.eulerAngles.x;
+        furnitures = GameObject.Find("Furnitures");
+        // Daniel Furniture Selection Menu
+        Debug.Log("parent");
+        Debug.Log("parent name: " + transform.parent.name);
+        if (transform.parent.name != "Furnitures")
+        {
+            menu = transform.parent.parent.parent.gameObject;
+            outsideOfMenu = false;
+            spawnManager = GameObject.Find("SpawnManager");
+            spawnScript = spawnManager.GetComponent<SpawnManager>();
+            alreadySpawned = spawnScript.alreadySpawned;
+        }
+        else
+        {
+            nearMenu = gameObject.transform.parent.GetComponent<FurnitureControl>().child;
+            rotationY = gameObject.transform.eulerAngles.y;
+            rotationX = gameObject.transform.eulerAngles.x;
+            ground = GameObject.Find("Ground");
+            isClone = true;
+        }
+
+        // Bilal near menu for manipulation
 
     }
 
@@ -40,21 +69,33 @@ public class ObjectPosition : MonoBehaviour
 
     public void OnHover()
     {
+        Debug.Log("hover started");
+        // Daniel Furniture Selection Menu
+            if (transform && !alreadySpawned && !outsideOfMenu)
+            {
+                alreadySpawned = true;
+                spawnScript.alreadySpawned = true;
+                isHovering = true;
 
-        if (!hoverEntered)
-        {
-
-            float height = GetComponent<Collider>().bounds.size.y;
-            menu.transform.position = new Vector3(transform.position.x - 0.12f, height + menuOffset, transform.position.z);
-
-            // Show the menu
-            menu.SetActive(true);
-            menu.GetComponent<NearMenu>().SetFurniture(transform.gameObject);
-
-            Debug.Log("onHoverEntered");
-        }
-        hoverEntered = true;
-
+                StartCoroutine(SpawnFurnitureAndHideMenu());
+            }
+        // Bilal near menu for manipulation
+        //else
+        //{
+        //    if (!hoverEntered)
+        //    {
+        //
+        //        float height = GetComponent<Collider>().bounds.size.y;
+        //        nearMenu.transform.position = new Vector3(transform.position.x - 0.12f, height + menuOffset, transform.position.z);
+        //
+        //        // Show the menu
+        //        nearMenu.SetActive(true);
+        //        nearMenu.GetComponent<NearMenu>().SetFurniture(transform.gameObject);
+        //
+        //        Debug.Log("onHoverEntered");
+        //    }
+        //    hoverEntered = true;
+        //}
     }
 
     public void OnHoverExited()
@@ -70,9 +111,28 @@ public class ObjectPosition : MonoBehaviour
     IEnumerator StopHover()
     {
         yield return new WaitForSecondsRealtime(5);
-        menu.SetActive(false);
+        nearMenu.SetActive(false);
         Debug.Log("SetHoverToFalse");
         hoverEntered = false;
+    }
+
+    // Daniel Furniture Selection Menu
+    IEnumerator SpawnFurnitureAndHideMenu()
+    {
+        yield return new WaitForSeconds(2);
+
+        if (isHovering)
+        {
+            prefab = Instantiate(transform, transform.position, Quaternion.identity);
+            prefab.transform.parent = furnitures.transform;
+
+            prefab.rotation = transform.rotation;
+            //prefab.GetComponent<ObjectPosition>().enabled = false;
+            //prefab.gameObject.AddComponent<Microsoft.MixedReality.Toolkit.UI.ObjectManipulator>();
+            prefab.gameObject.AddComponent<Microsoft.MixedReality.Toolkit.Input.NearInteractionGrabbable>();
+
+            menu.SetActive(false);
+        }
     }
 
     public void StartManipulation()
@@ -86,7 +146,7 @@ public class ObjectPosition : MonoBehaviour
     public void EndManipulation()
     {
 
-        menu.SetActive(false);
+        nearMenu.SetActive(false);
         StartCoroutine(SetOfGround());
         gameObject.GetComponent<ObjectManipulator>().AllowFarManipulation = true;
         Debug.Log("EndManipulation");
