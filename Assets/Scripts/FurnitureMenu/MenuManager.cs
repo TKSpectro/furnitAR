@@ -13,9 +13,9 @@ public class MenuManager : MonoBehaviour
         tableMenu = GameObject.Find("TableMenu");
         chairMenu = GameObject.Find("ChairMenu");
         wardrobeMenu = GameObject.Find("WardrobeMenu");
-        tableMenu.SetActive(false);
-        chairMenu.SetActive(false);
-        wardrobeMenu.SetActive(false);
+        //tableMenu.SetActive(false);
+        //chairMenu.SetActive(false);
+        //wardrobeMenu.SetActive(false);
     }
 
     public void ToggleTableMenu()
