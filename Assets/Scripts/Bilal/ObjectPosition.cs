@@ -3,6 +3,8 @@ using Microsoft.MixedReality.Toolkit.UI;
 using System.Collections;
 using Microsoft.MixedReality.Toolkit.Input;
 using Microsoft.MixedReality.Toolkit.UI.BoundsControl;
+using Microsoft.MixedReality.Toolkit;
+using Microsoft.MixedReality.Toolkit.Utilities;
 
 [RequireComponent(typeof(NearInteractionGrabbable))]
 [RequireComponent(typeof(ConstraintManager))]
@@ -20,6 +22,9 @@ public class ObjectPosition : MonoBehaviour
     bool isHovering = false;
     private GameObject furnitures;
     private bool isClone = false;
+    ObjectManipulator objectManipulator;
+    ScrollingManager scrollingManager;
+    private bool hasMomentum = false;
 
     // Bilal near menu for manipulation
     GameObject nearMenu;
@@ -28,8 +33,10 @@ public class ObjectPosition : MonoBehaviour
     public bool manipulationEnded = false;
     float rotationZ, rotationY, rotationX;
     private GameObject ground;
-    float menuOffset = 0.4f;
+    float menuOffset = 0.2f;
     float groundOffset = 0.1f;
+    private ManipulationHandFlags Nothing;
+    private bool alreadyResized = false;
 
 
     // Start is called before the first frame update
@@ -37,19 +44,31 @@ public class ObjectPosition : MonoBehaviour
     {
         furnitures = GameObject.Find("Furnitures");
         // Daniel Furniture Selection Menu
+
         Debug.Log("parent");
         Debug.Log("parent name: " + transform.parent.name);
+
+        objectManipulator = gameObject.GetComponent<Microsoft.MixedReality.Toolkit.UI.ObjectManipulator>();
         if (transform.parent.name != "Furnitures")
         {
             menu = transform.parent.parent.parent.gameObject;
             outsideOfMenu = false;
             spawnManager = GameObject.Find("SpawnManager");
+            objectManipulator.manipulationType = Nothing;
+            scrollingManager = menu.GetComponent<ScrollingManager>();
         }
         else
         {
             nearMenu = gameObject.transform.parent.GetComponent<FurnitureControl>().child;
             rotationY = gameObject.transform.eulerAngles.y;
             rotationX = gameObject.transform.eulerAngles.x;
+            objectManipulator.manipulationType = ManipulationHandFlags.OneHanded | ManipulationHandFlags.TwoHanded;
+            gameObject.EnsureComponent<Rigidbody>();
+            gameObject.GetComponent<Rigidbody>().mass = 0.001f;
+            gameObject.GetComponent<Rigidbody>().drag = 1f;
+            gameObject.GetComponent<Rigidbody>().angularDrag = 1f;
+            gameObject.GetComponent<Rigidbody>().useGravity = false;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
             ground = GameObject.Find("Ground");
             isClone = true;
         }
@@ -61,6 +80,11 @@ public class ObjectPosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!isClone)
+        {
+            hasMomentum = scrollingManager.hasMomentum;
+        }
+        //Debug.Log("has momentum: " + scrollingManager.hasMomentum);
 
     }
 
@@ -68,37 +92,38 @@ public class ObjectPosition : MonoBehaviour
     {
         Debug.Log("hover started");
         // Daniel Furniture Selection Menu
-            if (transform && !alreadySpawned && !outsideOfMenu)
-            {
-                alreadySpawned = true;
-                isHovering = true;
+        if (transform && !alreadySpawned && !outsideOfMenu && !hasMomentum)
+        {
+            alreadySpawned = true;
+            isHovering = true;
 
-                StartCoroutine(SpawnFurnitureAndHideMenu());
-            }
+            StartCoroutine(SpawnFurnitureAndHideMenu());
+        }
         // Bilal near menu for manipulation
-        //else
-        //{
-        //    if (!hoverEntered)
-        //    {
-        //
-        //        float height = GetComponent<Collider>().bounds.size.y;
-        //        nearMenu.transform.position = new Vector3(transform.position.x - 0.12f, height + menuOffset, transform.position.z);
-        //
-        //        // Show the menu
-        //        nearMenu.SetActive(true);
-        //        nearMenu.GetComponent<NearMenu>().SetFurniture(transform.gameObject);
-        //
-        //        Debug.Log("onHoverEntered");
-        //    }
-        //    hoverEntered = true;
-        //}
+        else
+        {
+            if (!hoverEntered)
+            {
+        
+                float height = GetComponent<Collider>().bounds.size.y;
+                Debug.Log("nearmenu: " + nearMenu);
+                nearMenu.transform.position = new Vector3(transform.position.x - 0.12f, transform.position.y + height + menuOffset, transform.position.z);
+        
+                // Show the menu
+                nearMenu.SetActive(true);
+                nearMenu.GetComponent<NearMenu>().SetFurniture(transform.gameObject);
+        
+                Debug.Log("onHoverEntered");
+            }
+            hoverEntered = true;
+        }
     }
 
     public void OnHoverExited()
     {
+        Debug.Log("onHoverExited");
         if (hoverEntered)
         {
-            Debug.Log("onHoverExited");
             // hide the menu after 3 second
             StartCoroutine(StopHover());
         }
@@ -117,7 +142,7 @@ public class ObjectPosition : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        if (isHovering && !isClone)
+        if (isHovering && !isClone && !hasMomentum)
         {
             prefab = Instantiate(transform, transform.position, Quaternion.identity);
             prefab.transform.parent = furnitures.transform;
@@ -133,7 +158,10 @@ public class ObjectPosition : MonoBehaviour
 
     public void StartManipulation()
     {
-        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        if(outsideOfMenu)
+        {
+
+        }
 
         Debug.Log("StartManipulation");
 
@@ -158,6 +186,11 @@ public class ObjectPosition : MonoBehaviour
 
         // set furniture piece of the ground
         transform.position = new Vector3(transform.position.x, height + groundOffset, transform.position.z);
+        if(!alreadyResized)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * 10f, transform.localScale.y * 10f, transform.localScale.z * 10f);
+            alreadyResized = true;
+        }
 
     }
 

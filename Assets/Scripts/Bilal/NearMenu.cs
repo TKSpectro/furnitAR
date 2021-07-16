@@ -73,16 +73,11 @@ public class NearMenu : MonoBehaviour
 
         //  Debug.Log("Change Materials");
         //furniturePiece = furniturePiece.transform.GetChild(0).gameObject;
-        Debug.Log("child = ", furniturePiece.transform.GetChild(0).gameObject);
+        //Debug.Log("child = ", furniturePiece.transform.GetChild(0).gameObject);
 
-        if (furniturePiece.transform.GetComponent<MeshRenderer>())
-        {
-            furniturePiece.transform.GetComponent<MeshRenderer>().material = material;
-        }
-        else
+        if (!furniturePiece.transform.GetComponent<MeshRenderer>())
         {
             furniturePiece.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = material;
-
         }
     }
 

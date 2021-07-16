@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 7039469456604198233}
   - component: {fileID: 7882225303830668033}
   - component: {fileID: 176790718462003986}
-  - component: {fileID: 6954906894621510109}
   - component: {fileID: 3130294011618478934}
   m_Layer: 0
   m_Name: Chair_1
@@ -266,22 +265,6 @@ MonoBehaviour:
   hoverEntered: 0
   startManipulation: 0
   manipulationEnded: 0
---- !u!54 &6954906894621510109
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1258234735230341041}
-  serializedVersion: 2
-  m_Mass: 0.001
-  m_Drag: 1
-  m_AngularDrag: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &3130294011618478934
 MonoBehaviour:
   m_ObjectHideFlags: 0
