@@ -61,7 +61,7 @@ public class BoundaryCreator : MonoBehaviour
         if (playAreaBoundary.Length > 0)
         {
             // If the player has set up a boundary we need to remove the pre-placed furniture, so they dont clip through the walls
-            GameObject placedItemsParent = GameObject.Find("PlacedItems");
+            GameObject placedItemsParent = GameObject.Find("Furnitures");
             // Run through the childs and remove them
             foreach (Transform child in placedItemsParent.transform)
             {

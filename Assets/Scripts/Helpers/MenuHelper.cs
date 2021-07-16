@@ -10,7 +10,7 @@ public class MenuHelper : MonoBehaviour
         List<GameObject> items = new List<GameObject>();
 
         // Find the parent item where all placed items should be placed
-        GameObject placedItemsParent = GameObject.Find("PlacedItems");
+        GameObject placedItemsParent = GameObject.Find("Furnitures");
 
         // Run through the childs of the parent and add all the objects the list
         foreach (Transform child in placedItemsParent.transform)
