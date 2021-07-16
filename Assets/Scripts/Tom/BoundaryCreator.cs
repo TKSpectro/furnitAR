@@ -153,7 +153,7 @@ public class BoundaryCreator : MonoBehaviour
     void DrawGround(Vector3[] vertices)
     {
         GameObject ground = Instantiate(new GameObject(), gameObject.transform);
-        ground.name = "ground";
+        ground.name = "Ground";
 
         // Add the MeshFilter, MeshCollider and MeshRenderer as Components
         MeshFilter meshFilter = ground.AddComponent<MeshFilter>();
@@ -198,7 +198,7 @@ public class BoundaryCreator : MonoBehaviour
         }
 
         GameObject roof = Instantiate(new GameObject(), gameObject.transform);
-        roof.name = "roof";
+        roof.name = "Roof";
 
         // Add the MeshFilter, MeshCollider and MeshRenderer as Components
         MeshFilter meshFilter = roof.AddComponent<MeshFilter>();
@@ -247,7 +247,7 @@ public class BoundaryCreator : MonoBehaviour
             Vector3[] wallVertices = { lowLeft, lowRight, topRight, topLeft };
 
             GameObject currentWall = Instantiate(new GameObject(), gameObject.transform);
-            currentWall.name = "wall" + i;
+            currentWall.name = "Wall" + i;
 
             // Add the MeshFilter, MeshCollider and MeshRenderer as Components
             MeshFilter meshFilter = currentWall.AddComponent<MeshFilter>();
