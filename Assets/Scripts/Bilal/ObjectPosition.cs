@@ -15,7 +15,6 @@ public class ObjectPosition : MonoBehaviour
     private Transform prefab;
     private GameObject spawnManager;
     private GameObject menu;
-    SpawnManager spawnScript;
     bool alreadySpawned = false;
     bool outsideOfMenu = true;
     bool isHovering = false;
@@ -45,8 +44,6 @@ public class ObjectPosition : MonoBehaviour
             menu = transform.parent.parent.parent.gameObject;
             outsideOfMenu = false;
             spawnManager = GameObject.Find("SpawnManager");
-            spawnScript = spawnManager.GetComponent<SpawnManager>();
-            alreadySpawned = spawnScript.alreadySpawned;
         }
         else
         {
@@ -74,7 +71,6 @@ public class ObjectPosition : MonoBehaviour
             if (transform && !alreadySpawned && !outsideOfMenu)
             {
                 alreadySpawned = true;
-                spawnScript.alreadySpawned = true;
                 isHovering = true;
 
                 StartCoroutine(SpawnFurnitureAndHideMenu());
@@ -121,7 +117,7 @@ public class ObjectPosition : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
 
-        if (isHovering)
+        if (isHovering && !isClone)
         {
             prefab = Instantiate(transform, transform.position, Quaternion.identity);
             prefab.transform.parent = furnitures.transform;
