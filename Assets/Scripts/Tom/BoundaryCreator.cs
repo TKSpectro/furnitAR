@@ -65,6 +65,12 @@ public class BoundaryCreator : MonoBehaviour
             // Run through the childs and remove them
             foreach (Transform child in placedItemsParent.transform)
             {
+                // Remove everything, except these two, because they are needed for the furniture menus
+                if (child.name == "NearMenu3x1" || child.name == "Materials")
+                {
+                    continue;
+                }
+
                 Destroy(child.gameObject);
             }
 
