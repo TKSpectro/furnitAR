@@ -160,6 +160,10 @@ public class BoundaryCreator : MonoBehaviour
         MeshCollider meshCollider = ground.AddComponent<MeshCollider>();
         Renderer renderer = ground.AddComponent<MeshRenderer>();
 
+        // Add for collisions with furniture
+        ground.AddComponent<BoxCollider>();
+        ground.AddComponent<Rigidbody>();
+
         // Set the material of the mesh to the material given by unity
         renderer.material = matGround;
 
