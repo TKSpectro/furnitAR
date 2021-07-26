@@ -161,8 +161,12 @@ public class BoundaryCreator : MonoBehaviour
         Renderer renderer = ground.AddComponent<MeshRenderer>();
 
         // Add for collisions with furniture
-        ground.AddComponent<BoxCollider>();
-        ground.AddComponent<Rigidbody>();
+        BoxCollider bc = ground.AddComponent<BoxCollider>();
+        bc.center = new Vector3(0.0f, -0.1f, 0.0f);
+        bc.size = new Vector3(4.0f, 0.2f, 4.0f);
+
+        Rigidbody rb = ground.AddComponent<Rigidbody>();
+        rb.isKinematic = true;
 
         // Set the material of the mesh to the material given by unity
         renderer.material = matGround;
