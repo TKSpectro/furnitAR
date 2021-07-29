@@ -160,11 +160,6 @@ public class BoundaryCreator : MonoBehaviour
         MeshCollider meshCollider = ground.AddComponent<MeshCollider>();
         Renderer renderer = ground.AddComponent<MeshRenderer>();
 
-        // Add for collisions with furniture
-        BoxCollider bc = ground.AddComponent<BoxCollider>();
-        bc.center = new Vector3(0.0f, -0.1f, 0.0f);
-        bc.size = new Vector3(4.0f, 0.2f, 4.0f);
-
         Rigidbody rb = ground.AddComponent<Rigidbody>();
         rb.isKinematic = true;
 
