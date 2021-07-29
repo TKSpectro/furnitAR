@@ -168,8 +168,18 @@ public class BoundaryCreator : MonoBehaviour
         Rigidbody rb = ground.AddComponent<Rigidbody>();
         rb.isKinematic = true;
 
+        float xScale = matGround.mainTextureScale.x;
+        float yScale = matGround.mainTextureScale.y;
+        if (OVRManager.boundary.GetConfigured())
+        {
+            Vector3 dimensions = OVRManager.boundary.GetDimensions(OVRBoundary.BoundaryType.PlayArea);
+            xScale = dimensions.x * 2;
+            yScale = dimensions.z * 2;
+        }
+
         // Set the material of the mesh to the material given by unity
         renderer.material = matGround;
+        renderer.material.mainTextureScale = new Vector2(xScale, yScale);
 
         Mesh mesh = new Mesh();
         mesh.name = "ProceduralGeneratedMesh";
@@ -213,8 +223,18 @@ public class BoundaryCreator : MonoBehaviour
         MeshCollider meshCollider = roof.AddComponent<MeshCollider>();
         Renderer renderer = roof.AddComponent<MeshRenderer>();
 
+        float xScale = matCeiling.mainTextureScale.x;
+        float yScale = matCeiling.mainTextureScale.y;
+        if (OVRManager.boundary.GetConfigured())
+        {
+            Vector3 dimensions = OVRManager.boundary.GetDimensions(OVRBoundary.BoundaryType.PlayArea);
+            xScale = dimensions.x;
+            yScale = dimensions.z;
+        }
+
         // Set the material of the mesh to the material given by unity
         renderer.material = matCeiling;
+        renderer.material.mainTextureScale = new Vector2(xScale, yScale);
 
         Mesh mesh = new Mesh();
         mesh.name = "ProceduralGeneratedMesh";
@@ -262,8 +282,17 @@ public class BoundaryCreator : MonoBehaviour
             MeshCollider meshCollider = currentWall.AddComponent<MeshCollider>();
             Renderer renderer = currentWall.AddComponent<MeshRenderer>();
 
+            float xScale = matWalls.mainTextureScale.x;
+            float yScale = matWalls.mainTextureScale.y;
+            if (OVRManager.boundary.GetConfigured())
+            {
+                Vector3 dimensions = OVRManager.boundary.GetDimensions(OVRBoundary.BoundaryType.PlayArea);
+                xScale = dimensions.x * 2;
+                yScale = dimensions.z * 2;
+            }
             // Set the material of the mesh to the material given by unity
             renderer.material = matWalls;
+            renderer.material.mainTextureScale = new Vector2(xScale, yScale);
 
             Mesh mesh = new Mesh();
             mesh.name = "ProceduralGeneratedMesh";
