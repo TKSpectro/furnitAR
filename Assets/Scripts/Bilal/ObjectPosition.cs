@@ -80,7 +80,7 @@ public class ObjectPosition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isClone)
+        if (!isClone)
         {
             hasMomentum = scrollingManager.hasMomentum;
         }
@@ -104,15 +104,15 @@ public class ObjectPosition : MonoBehaviour
         {
             if (!hoverEntered)
             {
-        
+
                 float height = GetComponent<Collider>().bounds.size.y;
                 Debug.Log("nearmenu: " + nearMenu);
                 nearMenu.transform.position = new Vector3(transform.position.x - 0.12f, transform.position.y + height + menuOffset, transform.position.z);
-        
+
                 // Show the menu
                 nearMenu.SetActive(true);
                 nearMenu.GetComponent<NearMenu>().SetFurniture(transform.gameObject);
-        
+
                 Debug.Log("onHoverEntered");
             }
             hoverEntered = true;
@@ -131,8 +131,9 @@ public class ObjectPosition : MonoBehaviour
 
     IEnumerator StopHover()
     {
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(6);
         nearMenu.SetActive(false);
+        nearMenu.GetComponent<NearMenu>().newItem.SetActive(false);
         Debug.Log("SetHoverToFalse");
         hoverEntered = false;
     }
@@ -158,7 +159,7 @@ public class ObjectPosition : MonoBehaviour
 
     public void StartManipulation()
     {
-        if(outsideOfMenu)
+        if (outsideOfMenu)
         {
 
         }
@@ -186,7 +187,7 @@ public class ObjectPosition : MonoBehaviour
 
         // set furniture piece of the ground
         transform.position = new Vector3(transform.position.x, height + groundOffset, transform.position.z);
-        if(!alreadyResized)
+        if (!alreadyResized)
         {
             transform.localScale = new Vector3(transform.localScale.x * 10f, transform.localScale.y * 10f, transform.localScale.z * 10f);
             alreadyResized = true;

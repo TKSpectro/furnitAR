@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class NearMenu : MonoBehaviour
 {
     private GameObject furniturePiece;
     public GameObject materialsCollection;
+    public GameObject newItem;
     private int counter = 0;
     private Material material;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        newItem.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,7 +28,21 @@ public class NearMenu : MonoBehaviour
         Destroy(furniturePiece);
         gameObject.SetActive(false);
     }
+    public void ShowFurnitureInfo()
+    {
 
+        newItem.transform.Find("Name").GetComponent<TextMeshPro>().text = furniturePiece.name;
+        newItem.transform.Find("Price").GetComponent<TextMeshPro>().text = transform.GetComponent<FurnitureAttributes>().price.ToString() + ".00€";
+        newItem.SetActive(true);
+        //StartCoroutine(HideFurnitureInfo());
+
+    }
+
+    IEnumerator HideFurnitureInfo()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        newItem.SetActive(false);
+    }
     public void ShowMaterialSpheres()
     {
 
