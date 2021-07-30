@@ -9,6 +9,10 @@ public class BuySelectedItems : MonoBehaviour
     public void BuyNow()
     {
         List<GameObject> placedItems = gameObject.GetComponent<MenuHelper>().FindPlacedItems();
+
+        BeraterVoiceHandler voiceHandler = GameObject.Find("Berater").GetComponent<BeraterVoiceHandler>();
+        voiceHandler.Say(voiceHandler.finishOrder);
+
         WriteToCSV(placedItems);
     }
 
