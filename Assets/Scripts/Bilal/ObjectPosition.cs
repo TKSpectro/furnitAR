@@ -6,10 +6,10 @@ using Microsoft.MixedReality.Toolkit.UI.BoundsControl;
 using Microsoft.MixedReality.Toolkit;
 using Microsoft.MixedReality.Toolkit.Utilities;
 
-[RequireComponent(typeof(NearInteractionGrabbable))]
-[RequireComponent(typeof(ConstraintManager))]
-[RequireComponent(typeof(MinMaxScaleConstraint))]
-[RequireComponent(typeof(CursorContextObjectManipulator))]
+//[RequireComponent(typeof(NearInteractionGrabbable))]
+//[RequireComponent(typeof(ConstraintManager))]
+//[RequireComponent(typeof(MinMaxScaleConstraint))]
+//[RequireComponent(typeof(CursorContextObjectManipulator))]
 
 public class ObjectPosition : MonoBehaviour
 {
@@ -100,8 +100,12 @@ public class ObjectPosition : MonoBehaviour
             StartCoroutine(SpawnFurnitureAndHideMenu());
         }
         // Bilal near menu for manipulation
-        else
+        if (isClone)
         {
+            Debug.Log("alreadySpawned= " + alreadySpawned);
+            Debug.Log("outsideOfMenu= " + outsideOfMenu);
+            Debug.Log("hasMomentum= " + hasMomentum);
+
             if (!hoverEntered)
             {
 
@@ -189,7 +193,7 @@ public class ObjectPosition : MonoBehaviour
         transform.position = new Vector3(transform.position.x, height + groundOffset, transform.position.z);
         if (!alreadyResized)
         {
-            transform.localScale = new Vector3(transform.localScale.x * 10f, transform.localScale.y * 10f, transform.localScale.z * 10f);
+            //transform.localScale = new Vector3(transform.localScale.x * 10f, transform.localScale.y * 10f, transform.localScale.z * 10f);
             alreadyResized = true;
         }
 
