@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7c4d4240e9b5fb468b0864f02d17ebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  camera: {fileID: 0}
 --- !u!1001 &4887420663674281826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -204,6 +204,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.0057
       objectReference: {fileID: 0}
+    - target: {fileID: 3374018212467406988, guid: 40b588bd40632eb41a0af374d91c4fc9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6af93521c278f4c42b2faf8cc779e835, type: 2}
     - target: {fileID: 3387837265659659143, guid: 40b588bd40632eb41a0af374d91c4fc9, type: 3}
       propertyPath: iconStyle
       value: 0
@@ -218,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3515418990045158255, guid: 40b588bd40632eb41a0af374d91c4fc9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4094684585208479604, guid: 40b588bd40632eb41a0af374d91c4fc9, type: 3}
       propertyPath: iconQuadTexture
