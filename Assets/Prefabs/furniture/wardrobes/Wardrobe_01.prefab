@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hostTransform: {fileID: 4257339688762232}
-  manipulationType: -1
+  manipulationType: 0
   twoHandedManipulationType: -1
   allowFarManipulation: 1
   useForcesForNearManipulation: 0
@@ -466,7 +466,7 @@ MonoBehaviour:
   rotateLerpTime: 0.001
   scaleLerpTime: 0.001
   enableConstraints: 1
-  constraintsManager: {fileID: 2489236131288320168, guid: 1817a4bd61c408b4ca9043998a2ac7ac, type: 3}
+  constraintsManager: {fileID: 6698964340862176051}
   elasticsManager: {fileID: 0}
   onManipulationStarted:
     m_PersistentCalls:
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afd5316c63705643b3daba5a6e923bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShowTetherWhenManipulating: 0
+  ShowTetherWhenManipulating: 1
   IsBoundsHandles: 0
 --- !u!114 &4946859835368669884
 MonoBehaviour:
@@ -648,8 +648,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02147386, y: 9.999998, z: 0.021738647}
-  m_Center: {x: 0.000021601216, y: -3.1695748e-17, z: 0.01085718}
+  m_Size: {x: 0.021473862, y: 0.024099058, z: 0.023213968}
+  m_Center: {x: 0.000021601216, y: -0.00021837825, z: 0.010734239}
 --- !u!1 &1805639117397532
 GameObject:
   m_ObjectHideFlags: 0
