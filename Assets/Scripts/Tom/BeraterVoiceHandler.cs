@@ -10,8 +10,54 @@ public class BeraterVoiceHandler : MonoBehaviour
     public AudioClip menuWardrobes;
     public AudioClip finishOrder;
 
+    bool isShown = true;
+
+    [SerializeField]
+    bool debugToggle = false;
+
+    private void Start()
+    {
+        // Maybe setup a tutorial/intro which the berater tells us
+    }
+
+    private void Update()
+    {
+        if (debugToggle)
+        {
+            if (isShown)
+            {
+                HideBerater();
+            }
+            else
+            {
+                ShowBerater();
+            }
+            debugToggle = false;
+        }
+    }
+
+    public void ShowBerater()
+    {
+        isShown = true;
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+    }
+
+    public void HideBerater()
+    {
+        isShown = false;
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
+
     public void Say(AudioClip audio)
     {
+        ShowBerater();
+
         Animator animator = GetComponent<Animator>();
         animator.SetBool("isTalking", true);
         gameObject.GetComponent<AudioSource>().PlayOneShot(audio);
@@ -32,5 +78,8 @@ public class BeraterVoiceHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         animator.SetBool("isTalking", false);
+
+        yield return new WaitForSeconds(2.0f);
+        HideBerater();
     }
 }
