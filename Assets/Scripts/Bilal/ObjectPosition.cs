@@ -14,7 +14,7 @@ using Microsoft.MixedReality.Toolkit.Utilities;
 public class ObjectPosition : MonoBehaviour
 {
     // Daniel Furniture Selection Menu
-    private Transform prefab;
+    private GameObject prefab;
     private GameObject spawnManager;
     private GameObject menu;
     bool alreadySpawned = false;
@@ -70,6 +70,7 @@ public class ObjectPosition : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().useGravity = false;
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
             ground = GameObject.Find("Ground");
+            gameObject.GetComponent<BoundsControl>().enabled = true;
             isClone = true;
         }
 
@@ -149,10 +150,10 @@ public class ObjectPosition : MonoBehaviour
 
         if (isHovering && !isClone && !hasMomentum)
         {
-            prefab = Instantiate(transform, transform.position, Quaternion.identity);
+            prefab = Instantiate(gameObject, transform.position, Quaternion.identity);
             prefab.transform.parent = furnitures.transform;
 
-            prefab.rotation = transform.rotation;
+            prefab.transform.rotation = transform.rotation;
             //prefab.GetComponent<ObjectPosition>().enabled = false;
             //prefab.gameObject.AddComponent<Microsoft.MixedReality.Toolkit.UI.ObjectManipulator>();
             prefab.gameObject.AddComponent<Microsoft.MixedReality.Toolkit.Input.NearInteractionGrabbable>();
