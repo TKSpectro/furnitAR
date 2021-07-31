@@ -738,10 +738,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   antwort1: {fileID: 8300000, guid: ae4bdcfa6133ef248b4dbaaf0e0ea020, type: 3}
-  menuChairs: {fileID: 0}
-  menuTables: {fileID: 0}
+  menuChairs: {fileID: 8300000, guid: 5bf70c893d7dfb94681df602cd95b499, type: 3}
+  menuTables: {fileID: 8300000, guid: 2e537f77b7c33a54f91f47f793a8bceb, type: 3}
   menuWardrobes: {fileID: 8300000, guid: ebd8908b93e6c08409406908a52f6e46, type: 3}
   finishOrder: {fileID: 8300000, guid: 7e75869f55d10094292be47b19f2e981, type: 3}
+  debugToggle: 0
 --- !u!114 &2099025293
 MonoBehaviour:
   m_ObjectHideFlags: 0
