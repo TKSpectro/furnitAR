@@ -10,10 +10,11 @@ using UnityEngine;
 [RequireComponent(typeof(MenuHelper))]
 public class HandMenuHandler : MonoBehaviour
 {
-    bool isExpertModeEnabled = false;
-
     [SerializeField]
     GameObject shoppingCart;
+
+    [SerializeField]
+    GameObject DialogPrefab;
 
     public void BuyNow()
     {
@@ -47,22 +48,6 @@ public class HandMenuHandler : MonoBehaviour
 
     public void toggleExpertMode()
     {
-        isExpertModeEnabled = !isExpertModeEnabled;
-        Debug.Log("Is Expertmode enabled: " + isExpertModeEnabled);
-    }
-
-    public void OutputSomething(bool test)
-    {
-        Debug.Log("Output: ");
-    }
-
-    public void OutputSomething2(string test)
-    {
-        Debug.Log("Output: " + test);
-    }
-
-    public void OutputSomething3(int test)
-    {
-        Debug.Log("Output: ");
+        Dialog.Open(DialogPrefab, DialogButtonType.OK, "Activate Expert Mode", "Dieses Feature konnte leider noch nicht implementiert werden.", true);
     }
 }
