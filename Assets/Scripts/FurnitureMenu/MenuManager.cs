@@ -17,9 +17,9 @@ public class MenuManager : MonoBehaviour
         wardrobeMenu = GameObject.Find("WardrobeMenu");
 
         voiceHandler = GameObject.Find("Berater").GetComponent<BeraterVoiceHandler>();
-        //tableMenu.SetActive(false);
-        //chairMenu.SetActive(false);
-        //wardrobeMenu.SetActive(false);
+        tableMenu.SetActive(false);
+        chairMenu.SetActive(false);
+        wardrobeMenu.SetActive(false);
     }
 
     public void ToggleTableMenu()
@@ -69,7 +69,7 @@ public class MenuManager : MonoBehaviour
         menuRotation.x = 0;
         menuRotation.z = 0;
         menuTransform.rotation = menuRotation;
-        Vector3 spawnPos = Camera.main.transform.position + (menuTransform.forward * 0.5f) - (menuTransform.right * 0.3f);
+        Vector3 spawnPos = Camera.main.transform.position + (menuTransform.forward * 0.5f) - (menuTransform.right * 0.3f) - (menuTransform.up * 0.3f);
         menuTransform.position = spawnPos;
 
         return menuTransform;
