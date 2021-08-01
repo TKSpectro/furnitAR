@@ -60,8 +60,10 @@ public class ObjectPosition : MonoBehaviour
             spawnManager = GameObject.Find("SpawnManager");
             objectManipulator.manipulationType = Nothing;
             scrollingManager = menu.GetComponent<ScrollingManager>();
+            FurnitureAttributes fa = gameObject.GetComponent<FurnitureAttributes>();
             gridObjectCollection = transform.parent.GetComponent<GridObjectCollection>();
-            AddCustomizableIcon();
+            IEnumerator coroutine = AddCustomizableIcon();
+            StartCoroutine(coroutine);
         }
         else
         {
@@ -158,6 +160,10 @@ public class ObjectPosition : MonoBehaviour
         {
             furnitureClone = Instantiate(gameObject, transform.position, Quaternion.identity);
             furnitureClone.transform.parent = furnitures.transform;
+            if(transform.Find("FurnitureInfo"))
+            {
+                furnitureClone.transform.Find("FurnitureInfo").gameObject.SetActive(false);
+            }
 
             furnitureClone.transform.rotation = transform.rotation;
             //prefab.GetComponent<ObjectPosition>().enabled = false;
@@ -206,42 +212,18 @@ public class ObjectPosition : MonoBehaviour
 
     }
 
-    private void AddCustomizableIcon()
-    {
-        if (transform.Find("FurnitureInfo"))
-        {
-            transform.Find("FurnitureInfo").transform.Find("Price").GetComponent<TextMeshPro>().text = "13.37€";
-            //transform.GetComponent<FurnitureAttributes>().price.ToString() + ".00€";
-            if(transform.childCount < 2)
-            {
-                transform.Find("FurnitureInfo").transform.Find("CustomizableIcon").gameObject.SetActive(false);
-            }
-        }
-        //if (transform.childCount > 0)
-        //{
-        //    //customizableIcon = Instantiate(Resources.Load("CustomizableIcon")) as GameObject;
-        //    //customizableIcon.transform.SetParent(transform);
-        //    //
-        //    //Vector3 iconRelative = customizableIcon.transform.InverseTransformPoint(transform.position);
-        //    //customizableIcon.transform.position = customizableIcon.transform.TransformPoint(iconRelative);
-        //    //Debug.Log("position relative: " + iconRelative);
-        //    //Debug.Log("position: " + transform.position);
-        //    ////customizableIcon.SetActive(true);
-        //    ////IEnumerator coroutine = CustomUpdateCollection(gridObjectCollection);
-        //    ////StartCoroutine(coroutine);
-        //    //customizableIcon.SetActive(true);
-        //}
-        //else
-        //{
-        //    Debug.Log("not customizable");
-        //
-        //}
-    }
-    private IEnumerator CustomUpdateCollection(GridObjectCollection gridObjectCollection)
+    private IEnumerator AddCustomizableIcon()
     {
         yield return new WaitForSeconds(0.01f);
-        gridObjectCollection.UpdateCollection();
+        if (transform.Find("FurnitureInfo"))
+        {
+            string price = gameObject.GetComponent<FurnitureAttributes>().price.ToString();
+            transform.Find("FurnitureInfo").transform.Find("Price").GetComponent<TextMeshPro>().text = price + ".00€";
+
+            if (transform.childCount < 2)
+            {
+                transform.Find("FurnitureInfo").transform.Find("CustomizableIcon").gameObject.GetComponent<Renderer>().enabled = false;
+            }
+        }
     }
-
-
 }
