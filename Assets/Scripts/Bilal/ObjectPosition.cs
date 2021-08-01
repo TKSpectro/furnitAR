@@ -5,6 +5,7 @@ using Microsoft.MixedReality.Toolkit.Input;
 using Microsoft.MixedReality.Toolkit.UI.BoundsControl;
 using Microsoft.MixedReality.Toolkit;
 using Microsoft.MixedReality.Toolkit.Utilities;
+using TMPro;
 
 //[RequireComponent(typeof(NearInteractionGrabbable))]
 //[RequireComponent(typeof(ConstraintManager))]
@@ -14,7 +15,9 @@ using Microsoft.MixedReality.Toolkit.Utilities;
 public class ObjectPosition : MonoBehaviour
 {
     // Daniel Furniture Selection Menu
-    private GameObject prefab;
+    //public GameObject customizableIconPrefab;
+    private GameObject customizableIcon;
+    private GameObject furnitureClone;
     private GameObject spawnManager;
     private GameObject menu;
     bool alreadySpawned = false;
@@ -25,6 +28,7 @@ public class ObjectPosition : MonoBehaviour
     ObjectManipulator objectManipulator;
     ScrollingManager scrollingManager;
     private bool hasMomentum = false;
+    GridObjectCollection gridObjectCollection;
 
     // Bilal near menu for manipulation
     GameObject nearMenu;
@@ -56,6 +60,8 @@ public class ObjectPosition : MonoBehaviour
             spawnManager = GameObject.Find("SpawnManager");
             objectManipulator.manipulationType = Nothing;
             scrollingManager = menu.GetComponent<ScrollingManager>();
+            gridObjectCollection = transform.parent.GetComponent<GridObjectCollection>();
+            AddCustomizableIcon();
         }
         else
         {
@@ -150,13 +156,13 @@ public class ObjectPosition : MonoBehaviour
 
         if (isHovering && !isClone && !hasMomentum)
         {
-            prefab = Instantiate(gameObject, transform.position, Quaternion.identity);
-            prefab.transform.parent = furnitures.transform;
+            furnitureClone = Instantiate(gameObject, transform.position, Quaternion.identity);
+            furnitureClone.transform.parent = furnitures.transform;
 
-            prefab.transform.rotation = transform.rotation;
+            furnitureClone.transform.rotation = transform.rotation;
             //prefab.GetComponent<ObjectPosition>().enabled = false;
             //prefab.gameObject.AddComponent<Microsoft.MixedReality.Toolkit.UI.ObjectManipulator>();
-            prefab.gameObject.AddComponent<Microsoft.MixedReality.Toolkit.Input.NearInteractionGrabbable>();
+            furnitureClone.gameObject.AddComponent<Microsoft.MixedReality.Toolkit.Input.NearInteractionGrabbable>();
 
             menu.SetActive(false);
         }
@@ -198,6 +204,43 @@ public class ObjectPosition : MonoBehaviour
             alreadyResized = true;
         }
 
+    }
+
+    private void AddCustomizableIcon()
+    {
+        if (transform.Find("FurnitureInfo"))
+        {
+            transform.Find("FurnitureInfo").transform.Find("Price").GetComponent<TextMeshPro>().text = "13.37€";
+            //transform.GetComponent<FurnitureAttributes>().price.ToString() + ".00€";
+            if(transform.childCount < 2)
+            {
+                transform.Find("FurnitureInfo").transform.Find("CustomizableIcon").gameObject.SetActive(false);
+            }
+        }
+        //if (transform.childCount > 0)
+        //{
+        //    //customizableIcon = Instantiate(Resources.Load("CustomizableIcon")) as GameObject;
+        //    //customizableIcon.transform.SetParent(transform);
+        //    //
+        //    //Vector3 iconRelative = customizableIcon.transform.InverseTransformPoint(transform.position);
+        //    //customizableIcon.transform.position = customizableIcon.transform.TransformPoint(iconRelative);
+        //    //Debug.Log("position relative: " + iconRelative);
+        //    //Debug.Log("position: " + transform.position);
+        //    ////customizableIcon.SetActive(true);
+        //    ////IEnumerator coroutine = CustomUpdateCollection(gridObjectCollection);
+        //    ////StartCoroutine(coroutine);
+        //    //customizableIcon.SetActive(true);
+        //}
+        //else
+        //{
+        //    Debug.Log("not customizable");
+        //
+        //}
+    }
+    private IEnumerator CustomUpdateCollection(GridObjectCollection gridObjectCollection)
+    {
+        yield return new WaitForSeconds(0.01f);
+        gridObjectCollection.UpdateCollection();
     }
 
 
