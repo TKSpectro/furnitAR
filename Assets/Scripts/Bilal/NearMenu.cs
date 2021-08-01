@@ -9,6 +9,7 @@ public class NearMenu : MonoBehaviour
     private GameObject furniturePiece;
     public GameObject materialsCollection;
     public GameObject newItem;
+    public GameObject x;
     private int counter = 0;
     private Material material;
 
@@ -63,11 +64,14 @@ public class NearMenu : MonoBehaviour
                 counter++;
             }
         }
-        materialsCollection.SetActive(true);
+        if (!furniturePiece.transform.GetComponent<MeshRenderer>())
+        {
+            materialsCollection.SetActive(true);
+        }
+      
         counter = 0;
 
     }
-
 
 
     public void ChangeMaterial()
@@ -76,8 +80,9 @@ public class NearMenu : MonoBehaviour
         {
             Destroy(furniturePiece.transform.GetChild(0).gameObject.GetComponent<MaterialInstance>());
             furniturePiece.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = material;
-           
+
         }
+      
     }
 
     public void SetMaterial(Material mat)

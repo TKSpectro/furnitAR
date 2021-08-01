@@ -42,6 +42,7 @@ public class ObjectPosition : MonoBehaviour
     float groundOffset = 0.1f;
     private ManipulationHandFlags Nothing;
     private bool alreadyResized = false;
+   
 
 
     // Start is called before the first frame update
@@ -114,6 +115,14 @@ public class ObjectPosition : MonoBehaviour
                 nearMenu.transform.position = new Vector3(transform.position.x - 0.12f, transform.position.y + height + menuOffset, transform.position.z);
 
                 // Show the menu
+                if (gameObject.GetComponent<MeshRenderer>())
+                {
+                    nearMenu.GetComponent<NearMenu>().x.SetActive(true);
+                }
+                else
+                {
+                    nearMenu.GetComponent<NearMenu>().x.SetActive(false);
+                }
                 nearMenu.SetActive(true);
                 nearMenu.GetComponent<NearMenu>().SetFurniture(gameObject);
 
@@ -134,7 +143,7 @@ public class ObjectPosition : MonoBehaviour
 
     IEnumerator StopHover()
     {
-        yield return new WaitForSecondsRealtime(6);
+        yield return new WaitForSecondsRealtime(4);
         nearMenu.SetActive(false);
         nearMenu.GetComponent<NearMenu>().newItem.SetActive(false);
         hoverEntered = false;
