@@ -76,10 +76,7 @@ public class NearMenu : MonoBehaviour
         {
             Destroy(furniturePiece.transform.GetChild(0).gameObject.GetComponent<MaterialInstance>());
             furniturePiece.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = material;
-            if (furniturePiece.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material != material)
-            {
-                furniturePiece.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = material;
-            }
+           
         }
     }
 

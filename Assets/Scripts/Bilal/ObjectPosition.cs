@@ -6,6 +6,7 @@ using Microsoft.MixedReality.Toolkit.UI.BoundsControl;
 using Microsoft.MixedReality.Toolkit;
 using Microsoft.MixedReality.Toolkit.Utilities;
 using TMPro;
+using Microsoft.MixedReality.Toolkit.Rendering;
 
 //[RequireComponent(typeof(NearInteractionGrabbable))]
 //[RequireComponent(typeof(ConstraintManager))]
@@ -70,12 +71,8 @@ public class ObjectPosition : MonoBehaviour
             rotationX = gameObject.transform.eulerAngles.x;
             objectManipulator.manipulationType = ManipulationHandFlags.OneHanded | ManipulationHandFlags.TwoHanded;
             gameObject.EnsureComponent<BoxCollider>().enabled = true;
-            //gameObject.EnsureComponent<Rigidbody>();
-            //gameObject.GetComponent<Rigidbody>().mass = 0.001f;
-            //gameObject.GetComponent<Rigidbody>().drag = 1f;
-            //gameObject.GetComponent<Rigidbody>().angularDrag = 1f;
-            //gameObject.GetComponent<Rigidbody>().useGravity = false;
-            //gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            Destroy(transform.GetChild(0).gameObject.GetComponent<MaterialInstance>());
+            //furniturePiece.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = material;
             ground = GameObject.Find("Ground");
             gameObject.GetComponent<BoundsControl>().enabled = true;
             isClone = true;
