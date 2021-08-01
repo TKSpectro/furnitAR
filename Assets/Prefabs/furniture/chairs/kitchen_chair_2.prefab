@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 4521185379288794863}
   - component: {fileID: 3402972973914958282}
   - component: {fileID: 1717718583635949144}
+  - component: {fileID: -9118717424730890268}
   m_Layer: 0
   m_Name: kitchen_chair_2
   m_TagString: chair
@@ -447,6 +448,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   elasticsManager: {fileID: 0}
+--- !u!54 &-9118717424730890268
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2958212389981117932}
+  serializedVersion: 2
+  m_Mass: 0.001
+  m_Drag: 1
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
 --- !u!1 &2958212389981117934
 GameObject:
   m_ObjectHideFlags: 0

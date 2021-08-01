@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 6195897433194238053}
   - component: {fileID: 956126241193338862}
   - component: {fileID: 1329978003349365473}
+  - component: {fileID: 4983317448492795087}
   m_Layer: 0
   m_Name: Chair_3
   m_TagString: chair
@@ -305,6 +306,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   elasticsManager: {fileID: 0}
+--- !u!54 &4983317448492795087
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4841340671702348500}
+  serializedVersion: 2
+  m_Mass: 0.001
+  m_Drag: 1
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
 --- !u!1001 &3276697812183629753
 PrefabInstance:
   m_ObjectHideFlags: 0
