@@ -398,6 +398,7 @@ GameObject:
   - component: {fileID: 5213295600088939247}
   - component: {fileID: 5253570844315013465}
   - component: {fileID: 3107695245479672021}
+  - component: {fileID: -8644417634084784470}
   m_Layer: 0
   m_Name: Wardrobe_01
   m_TagString: wardrobe
@@ -650,6 +651,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.021473862, y: 0.024099058, z: 0.023213968}
   m_Center: {x: 0.000021601216, y: -0.00021837825, z: 0.010734239}
+--- !u!54 &-8644417634084784470
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702975549242344}
+  serializedVersion: 2
+  m_Mass: 0.001
+  m_Drag: 1
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
 --- !u!1 &1805639117397532
 GameObject:
   m_ObjectHideFlags: 0
