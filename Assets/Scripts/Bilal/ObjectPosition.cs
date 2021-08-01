@@ -49,8 +49,6 @@ public class ObjectPosition : MonoBehaviour
         furnitures = GameObject.Find("Furnitures");
         // Daniel Furniture Selection Menu
 
-        Debug.Log("parent");
-        Debug.Log("parent name: " + transform.parent.name);
 
         objectManipulator = gameObject.GetComponent<Microsoft.MixedReality.Toolkit.UI.ObjectManipulator>();
         if (transform.parent.name != "Furnitures")
@@ -93,13 +91,11 @@ public class ObjectPosition : MonoBehaviour
         {
             hasMomentum = scrollingManager.hasMomentum;
         }
-        //Debug.Log("has momentum: " + scrollingManager.hasMomentum);
 
     }
 
     public void OnHover()
     {
-        Debug.Log("hover started");
         // Daniel Furniture Selection Menu
         if (transform && !alreadySpawned && !outsideOfMenu && !hasMomentum)
         {
@@ -111,10 +107,6 @@ public class ObjectPosition : MonoBehaviour
         // Bilal near menu for manipulation
         if (isClone)
         {
-            Debug.Log("alreadySpawned= " + alreadySpawned);
-            Debug.Log("outsideOfMenu= " + outsideOfMenu);
-            Debug.Log("hasMomentum= " + hasMomentum);
-
             if (!hoverEntered)
             {
 
@@ -134,7 +126,6 @@ public class ObjectPosition : MonoBehaviour
 
     public void OnHoverExited()
     {
-        Debug.Log("onHoverExited");
         if (hoverEntered)
         {
             // hide the menu after 3 second
@@ -147,7 +138,6 @@ public class ObjectPosition : MonoBehaviour
         yield return new WaitForSecondsRealtime(6);
         nearMenu.SetActive(false);
         nearMenu.GetComponent<NearMenu>().newItem.SetActive(false);
-        Debug.Log("SetHoverToFalse");
         hoverEntered = false;
     }
 
@@ -166,41 +156,20 @@ public class ObjectPosition : MonoBehaviour
             }
 
             furnitureClone.transform.rotation = transform.rotation;
-            //prefab.GetComponent<ObjectPosition>().enabled = false;
-            //prefab.gameObject.AddComponent<Microsoft.MixedReality.Toolkit.UI.ObjectManipulator>();
             furnitureClone.gameObject.AddComponent<Microsoft.MixedReality.Toolkit.Input.NearInteractionGrabbable>();
 
             menu.SetActive(false);
         }
     }
 
-    /*  public void StartManipulation()
-      {
-          if (outsideOfMenu)
-          {
-
-          }
-
-          Debug.Log("StartManipulation");
-
-      }*/
-
     public void EndManipulation()
     {
 
         nearMenu.SetActive(false);
         StartCoroutine(SetOfGround());
-        // gameObject.GetComponent<ObjectManipulator>().AllowFarManipulation = true;
-        Debug.Log("EndManipulation");
-
     }
     IEnumerator SetOfGround()
     {
-
-        Debug.Log("ground= " + ground);
-        Debug.Log("bounds= " + ground.GetComponent<MeshCollider>().bounds);
-        Debug.Log("bounds.size = " + ground.GetComponent<MeshCollider>().bounds.size);
-        Debug.Log("bounds.size.y= " + ground.GetComponent<MeshCollider>().bounds.size.y);
         float height = ground.GetComponent<MeshCollider>().bounds.size.y;
         yield return new WaitForSecondsRealtime(2);
         // correct the rotation of furniture  
