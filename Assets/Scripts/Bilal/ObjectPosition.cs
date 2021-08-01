@@ -167,6 +167,7 @@ public class ObjectPosition : MonoBehaviour
             furnitureClone.gameObject.AddComponent<Microsoft.MixedReality.Toolkit.Input.NearInteractionGrabbable>();
 
             menu.SetActive(false);
+            alreadySpawned = false;
         }
     }
 
