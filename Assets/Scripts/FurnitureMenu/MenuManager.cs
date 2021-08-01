@@ -17,9 +17,9 @@ public class MenuManager : MonoBehaviour
         wardrobeMenu = GameObject.Find("WardrobeMenu");
 
         voiceHandler = GameObject.Find("Berater").GetComponent<BeraterVoiceHandler>();
-        tableMenu.SetActive(false);
-        chairMenu.SetActive(false);
-        wardrobeMenu.SetActive(false);
+        tableMenu.transform.position = new Vector3(-9999, -9999, -9999);
+        chairMenu.transform.position = new Vector3(-9999, -9999, -9999);
+        wardrobeMenu.transform.position = new Vector3(-9999, -9999, -9999);
     }
 
     public void ToggleTableMenu()
