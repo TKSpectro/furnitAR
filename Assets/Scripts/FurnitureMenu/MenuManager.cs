@@ -33,7 +33,7 @@ public class MenuManager : MonoBehaviour
         tableMenu.transform.position = tableTransform.position;
         tableMenu.transform.rotation = tableTransform.rotation;
 
-       voiceHandler.Say(voiceHandler.menuTables);
+        voiceHandler.Say(voiceHandler.menuTables);
     }
     public void ToggleChairMenu()
     {
@@ -60,6 +60,13 @@ public class MenuManager : MonoBehaviour
         wardrobeMenu.transform.rotation = chairTransform.rotation;
 
         voiceHandler.Say(voiceHandler.menuWardrobes);
+    }
+
+    public void HideAllMenus()
+    {
+        chairMenu.SetActive(false);
+        tableMenu.SetActive(false);
+        wardrobeMenu.SetActive(false);
     }
 
     private Transform CalculateMenuPosition()

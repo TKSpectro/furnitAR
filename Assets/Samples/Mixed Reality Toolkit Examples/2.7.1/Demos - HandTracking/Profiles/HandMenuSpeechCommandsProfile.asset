@@ -79,3 +79,17 @@ MonoBehaviour:
       id: 0
       description: Toggle Profiler
       axisConstraint: 0
+  - localizationKey: 
+    keyword: "Men\xFC schlie\xDFen"
+    keyCode: 0
+    action:
+      id: 0
+      description: Toggle Profiler
+      axisConstraint: 0
+  - localizationKey: 
+    keyword: Hallo Berater
+    keyCode: 0
+    action:
+      id: 0
+      description: Toggle Profiler
+      axisConstraint: 0
