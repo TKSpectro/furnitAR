@@ -124,7 +124,7 @@ public class ObjectPosition : MonoBehaviour
 
                 // Show the menu
                 nearMenu.SetActive(true);
-                nearMenu.GetComponent<NearMenu>().SetFurniture(transform.gameObject);
+                nearMenu.GetComponent<NearMenu>().SetFurniture(gameObject);
 
                 Debug.Log("onHoverEntered");
             }
@@ -174,30 +174,34 @@ public class ObjectPosition : MonoBehaviour
         }
     }
 
-    public void StartManipulation()
-    {
-        if (outsideOfMenu)
-        {
+    /*  public void StartManipulation()
+      {
+          if (outsideOfMenu)
+          {
 
-        }
+          }
 
-        Debug.Log("StartManipulation");
+          Debug.Log("StartManipulation");
 
-    }
+      }*/
 
     public void EndManipulation()
     {
 
         nearMenu.SetActive(false);
         StartCoroutine(SetOfGround());
-        gameObject.GetComponent<ObjectManipulator>().AllowFarManipulation = true;
+        // gameObject.GetComponent<ObjectManipulator>().AllowFarManipulation = true;
         Debug.Log("EndManipulation");
 
     }
     IEnumerator SetOfGround()
     {
 
-        float height = ground.GetComponent<Collider>().bounds.size.y;
+        Debug.Log("ground= " + ground);
+        Debug.Log("bounds= " + ground.GetComponent<MeshCollider>().bounds);
+        Debug.Log("bounds.size = " + ground.GetComponent<MeshCollider>().bounds.size);
+        Debug.Log("bounds.size.y= " + ground.GetComponent<MeshCollider>().bounds.size.y);
+        float height = ground.GetComponent<MeshCollider>().bounds.size.y;
         yield return new WaitForSecondsRealtime(2);
         // correct the rotation of furniture  
         gameObject.transform.eulerAngles = new Vector3(rotationX, gameObject.transform.eulerAngles.y, gameObject.transform.eulerAngles.z);
