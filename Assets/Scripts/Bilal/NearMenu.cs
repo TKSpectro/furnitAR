@@ -32,7 +32,7 @@ public class NearMenu : MonoBehaviour
     {
 
         newItem.transform.Find("Name").GetComponent<TextMeshPro>().text = furniturePiece.name;
-        newItem.transform.Find("Price").GetComponent<TextMeshPro>().text = transform.GetComponent<FurnitureAttributes>().price.ToString() + ".00€";
+        newItem.transform.Find("Price").GetComponent<TextMeshPro>().text = furniturePiece.GetComponent<FurnitureAttributes>().price.ToString() + ".00€";
         newItem.SetActive(true);
         //StartCoroutine(HideFurnitureInfo());
 
