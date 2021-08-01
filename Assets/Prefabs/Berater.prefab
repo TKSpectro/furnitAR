@@ -841,8 +841,8 @@ MonoBehaviour:
   trackedHandness: 3
   trackedHandJoint: 2
   transformOverride: {fileID: 0}
-  additionalOffset: {x: 0.6, y: -0.14, z: 2.63}
-  additionalRotation: {x: 0.38, y: 191.36, z: 0}
+  additionalOffset: {x: 0.67, y: -0.05, z: 2.75}
+  additionalRotation: {x: 0.38, y: 192.66, z: 0}
   updateSolvers: 1
 --- !u!114 &2099025297
 MonoBehaviour:
