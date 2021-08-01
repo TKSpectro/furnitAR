@@ -11,7 +11,13 @@ using UnityEngine;
 public class HandMenuHandler : MonoBehaviour
 {
     [SerializeField]
+    GameObject menuContent;
+
+    [SerializeField]
     GameObject shoppingCart;
+
+    [SerializeField]
+    public GameObject orders;
 
     [SerializeField]
     GameObject DialogPrefab;
@@ -40,14 +46,28 @@ public class HandMenuHandler : MonoBehaviour
         }
 
         // Hide the normal hand menu content
-        GameObject menuContent = shoppingCart.transform.parent.Find("MenuContent").gameObject;
         menuContent.SetActive(!menuContent.activeInHierarchy);
 
         shoppingCart.SetActive(!shoppingCart.activeInHierarchy);
     }
 
+    public void ToggleOrders()
+    {
+        // If the shoppingcart is not active, update its values (items and completePrice) and then show it
+        if (!orders.activeInHierarchy)
+        {
+            List<GameObject> ordersItems = orders.GetComponent<OrdersHandler>().ordersItems;
+        }
+
+        // Hide the normal hand menu content
+        menuContent.SetActive(false);
+
+        orders.SetActive(!orders.activeInHierarchy);
+    }
+
     public void toggleExpertMode()
     {
+        menuContent.SetActive(false);
         Dialog.Open(DialogPrefab, DialogButtonType.OK, "Activate Expert Mode", "Dieses Feature konnte leider noch nicht implementiert werden.", true);
     }
 }

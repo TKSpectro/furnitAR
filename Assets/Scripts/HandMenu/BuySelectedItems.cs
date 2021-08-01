@@ -13,6 +13,9 @@ public class BuySelectedItems : MonoBehaviour
         BeraterVoiceHandler voiceHandler = GameObject.Find("Berater").GetComponent<BeraterVoiceHandler>();
         voiceHandler.Say(voiceHandler.finishOrder);
 
+        OrdersHandler ordersHandler = gameObject.GetComponent<HandMenuHandler>().orders.GetComponent<OrdersHandler>();
+        ordersHandler.AddItemsToOrderHistory(placedItems);
+
         WriteToCSV(placedItems);
     }
 
