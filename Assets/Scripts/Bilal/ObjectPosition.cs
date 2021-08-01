@@ -42,8 +42,6 @@ public class ObjectPosition : MonoBehaviour
     float groundOffset = 0.1f;
     private ManipulationHandFlags Nothing;
     private bool alreadyResized = false;
-    //public MeshRenderer meshRenderer;
-    public Material mat = null;
 
 
 
@@ -74,11 +72,6 @@ public class ObjectPosition : MonoBehaviour
             rotationX = gameObject.transform.eulerAngles.x;
             objectManipulator.manipulationType = ManipulationHandFlags.OneHanded | ManipulationHandFlags.TwoHanded;
             gameObject.EnsureComponent<BoxCollider>().enabled = true;
-            //meshRenderer = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>();
-            if (transform.GetChild(0).gameObject.GetComponent<MeshRenderer>())
-            {
-                mat = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material;
-            }
             Destroy(transform.GetChild(0).gameObject.GetComponent<MaterialInstance>());
             ground = GameObject.Find("Ground");
             gameObject.GetComponent<BoundsControl>().enabled = true;

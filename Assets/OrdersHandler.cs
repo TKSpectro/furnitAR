@@ -21,10 +21,9 @@ public class OrdersHandler : MonoBehaviour
 
     public void AddItemsToOrderHistory(List<GameObject> items)
     {
-        Material mat;
+
         foreach (GameObject item in items)
         {
-            mat = item.GetComponent<ObjectPosition>().mat;
             ordersItems.Add(item);
             GameObject newItem = Instantiate(itemPrefab, itemList.transform);
 
@@ -61,12 +60,6 @@ public class OrdersHandler : MonoBehaviour
                     DestroyImmediate(model.transform.Find("rigRoot").gameObject);
                 if (model.transform.Find("FurnitureInfo") != null)
                     DestroyImmediate(model.transform.Find("FurnitureInfo").gameObject);
-            }
-            if (mat != null)
-            {
-
-                MeshRenderer mi = model.AddComponent<MeshRenderer>();
-                mi.material = mat;
             }
             model.transform.localPosition = new Vector3();
         }
