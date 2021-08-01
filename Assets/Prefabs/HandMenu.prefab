@@ -880,7 +880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shoppingCart: {fileID: 7576301481682216647}
-  DialogPrefab: {fileID: 2680377478557818543, guid: 8e686c90124b8e14cbf8093893109e9a, type: 3}
+  DialogPrefab: {fileID: 7740983762283863971, guid: 8ebe629bfdac0ba4abad56fd4e0368cb, type: 3}
 --- !u!1 &4347169220415860405
 GameObject:
   m_ObjectHideFlags: 0
