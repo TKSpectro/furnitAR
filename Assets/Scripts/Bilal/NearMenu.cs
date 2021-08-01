@@ -17,13 +17,6 @@ public class NearMenu : MonoBehaviour
     {
         newItem.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void DeleteFurniture()
     {
         Destroy(furniturePiece);
@@ -35,15 +28,8 @@ public class NearMenu : MonoBehaviour
         newItem.transform.Find("Name").GetComponent<TextMeshPro>().text = furniturePiece.name;
         newItem.transform.Find("Price").GetComponent<TextMeshPro>().text = transform.GetComponent<FurnitureAttributes>().price.ToString() + ".00€";
         newItem.SetActive(true);
-        //StartCoroutine(HideFurnitureInfo());
-
     }
 
-    IEnumerator HideFurnitureInfo()
-    {
-        yield return new WaitForSecondsRealtime(5);
-        newItem.SetActive(false);
-    }
     public void ShowMaterialSpheres()
     {
 
@@ -52,7 +38,6 @@ public class NearMenu : MonoBehaviour
 
         if (furniturePiece.tag == "wardrobe")
         {
-            Debug.Log("wardrobe");
             foreach (Transform spher in materialsCollection.transform)
             {
                 spher.GetComponent<MeshRenderer>().material = transform.parent.GetComponent<FurnitureControl>().wardrobes[counter];
@@ -87,15 +72,11 @@ public class NearMenu : MonoBehaviour
 
     public void ChangeMaterial()
     {
-
-        //  Debug.Log("Change Materials");
-        //furniturePiece = furniturePiece.transform.GetChild(0).gameObject;
-        //Debug.Log("child = ", furniturePiece.transform.GetChild(0).gameObject);
-
         if (!furniturePiece.transform.GetComponent<MeshRenderer>())
         {
             Destroy(furniturePiece.transform.GetChild(0).gameObject.GetComponent<MaterialInstance>());
             furniturePiece.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = material;
+           
         }
     }
 
