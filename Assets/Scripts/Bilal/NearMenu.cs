@@ -1,3 +1,4 @@
+using Microsoft.MixedReality.Toolkit.Rendering;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -91,8 +92,12 @@ public class NearMenu : MonoBehaviour
         //furniturePiece = furniturePiece.transform.GetChild(0).gameObject;
         //Debug.Log("child = ", furniturePiece.transform.GetChild(0).gameObject);
 
+        Debug.Log("bevor Change Material");
         if (!furniturePiece.transform.GetComponent<MeshRenderer>())
         {
+            Debug.Log("Change Material");
+            //  furniturePiece.transform.GetChild(0).gameObject.GetComponent<MaterialInstance>().kill;
+            Destroy(furniturePiece.transform.GetChild(0).gameObject.GetComponent<MaterialInstance>());
             furniturePiece.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = material;
         }
     }
