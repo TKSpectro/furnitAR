@@ -42,7 +42,9 @@ public class ObjectPosition : MonoBehaviour
     float groundOffset = 0.1f;
     private ManipulationHandFlags Nothing;
     private bool alreadyResized = false;
-   
+    //public MeshRenderer meshRenderer;
+    public Material mat = null;
+
 
 
     // Start is called before the first frame update
@@ -72,12 +74,16 @@ public class ObjectPosition : MonoBehaviour
             rotationX = gameObject.transform.eulerAngles.x;
             objectManipulator.manipulationType = ManipulationHandFlags.OneHanded | ManipulationHandFlags.TwoHanded;
             gameObject.EnsureComponent<BoxCollider>().enabled = true;
+            //meshRenderer = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>();
+            if (transform.GetChild(0).gameObject.GetComponent<MeshRenderer>())
+            {
+                mat = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material;
+            }
             Destroy(transform.GetChild(0).gameObject.GetComponent<MaterialInstance>());
-            //furniturePiece.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = material;
             ground = GameObject.Find("Ground");
             gameObject.GetComponent<BoundsControl>().enabled = true;
             isClone = true;
-           
+
         }
 
         // Bilal near menu for manipulation
@@ -97,9 +103,9 @@ public class ObjectPosition : MonoBehaviour
     public void OnHover()
     {
         // Daniel Furniture Selection Menu
-        if ( transform && !alreadySpawned && !outsideOfMenu && !hasMomentum)
+        if (transform && !alreadySpawned && !outsideOfMenu && !hasMomentum)
         {
-           
+
             isHovering = true;
 
             StartCoroutine(SpawnFurnitureAndHideMenu());
@@ -159,7 +165,7 @@ public class ObjectPosition : MonoBehaviour
             alreadySpawned = true;
             furnitureClone = Instantiate(gameObject, transform.position, Quaternion.identity);
             furnitureClone.transform.parent = furnitures.transform;
-            if(transform.Find("FurnitureInfo"))
+            if (transform.Find("FurnitureInfo"))
             {
                 furnitureClone.transform.Find("FurnitureInfo").gameObject.SetActive(false);
             }
@@ -176,11 +182,11 @@ public class ObjectPosition : MonoBehaviour
 
         nearMenu.SetActive(false);
         StartCoroutine(SetOfGround());
-    }  
-  
+    }
+
     IEnumerator SetOfGround()
     {
-        
+
         float height = ground.GetComponent<MeshCollider>().bounds.size.y;
         yield return new WaitForSecondsRealtime(2);
         // correct the rotation of furniture  

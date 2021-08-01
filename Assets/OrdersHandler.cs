@@ -1,4 +1,5 @@
 using Microsoft.MixedReality.Toolkit.Input;
+using Microsoft.MixedReality.Toolkit.Rendering;
 using Microsoft.MixedReality.Toolkit.UI;
 using Microsoft.MixedReality.Toolkit.UI.BoundsControl;
 using Microsoft.MixedReality.Toolkit.Utilities;
@@ -20,8 +21,10 @@ public class OrdersHandler : MonoBehaviour
 
     public void AddItemsToOrderHistory(List<GameObject> items)
     {
+        Material mat;
         foreach (GameObject item in items)
         {
+            mat = item.GetComponent<ObjectPosition>().mat;
             ordersItems.Add(item);
             GameObject newItem = Instantiate(itemPrefab, itemList.transform);
 
@@ -46,7 +49,7 @@ public class OrdersHandler : MonoBehaviour
             foreach (var comp in model.GetComponents<Component>())
             {
                 //Don't remove these components
-                if (!(comp is Transform) && !(comp is BoxCollider) && !(comp is MeshRenderer) && !(comp is MeshFilter))
+                if (!(comp is Transform) && !(comp is BoxCollider) && !(comp is MeshRenderer) && !(comp is MeshFilter) && !(comp is MaterialInstance))
                 {
                     DestroyImmediate(comp);
                 }
@@ -59,7 +62,12 @@ public class OrdersHandler : MonoBehaviour
                 if (model.transform.Find("FurnitureInfo") != null)
                     DestroyImmediate(model.transform.Find("FurnitureInfo").gameObject);
             }
+            if (mat != null)
+            {
 
+                MeshRenderer mi = model.AddComponent<MeshRenderer>();
+                mi.material = mat;
+            }
             model.transform.localPosition = new Vector3();
         }
 
