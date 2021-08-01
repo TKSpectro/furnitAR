@@ -184,7 +184,7 @@ public class ObjectPosition : MonoBehaviour
         transform.position = new Vector3(transform.position.x, height + groundOffset, transform.position.z);
         if (!alreadyResized)
         {
-            //transform.localScale = new Vector3(transform.localScale.x * 10f, transform.localScale.y * 10f, transform.localScale.z * 10f);
+            transform.localScale = new Vector3(transform.localScale.x * 10f, transform.localScale.y * 10f, transform.localScale.z * 10f);
             alreadyResized = true;
         }
 
