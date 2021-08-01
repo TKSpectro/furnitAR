@@ -16,7 +16,7 @@ public class MenuManager : MonoBehaviour
         chairMenu = GameObject.Find("ChairMenu");
         wardrobeMenu = GameObject.Find("WardrobeMenu");
 
-        //voiceHandler = GameObject.Find("Berater").GetComponent<BeraterVoiceHandler>();
+        voiceHandler = GameObject.Find("Berater").GetComponent<BeraterVoiceHandler>();
         //tableMenu.SetActive(false);
         //chairMenu.SetActive(false);
         //wardrobeMenu.SetActive(false);
@@ -33,7 +33,7 @@ public class MenuManager : MonoBehaviour
         tableMenu.transform.position = tableTransform.position;
         tableMenu.transform.rotation = tableTransform.rotation;
 
-        //voiceHandler.Say(voiceHandler.menuTables);
+       voiceHandler.Say(voiceHandler.menuTables);
     }
     public void ToggleChairMenu()
     {
@@ -46,7 +46,7 @@ public class MenuManager : MonoBehaviour
         chairMenu.transform.position = chairTransform.position;
         chairMenu.transform.rotation = chairTransform.rotation;
 
-        //voiceHandler.Say(voiceHandler.menuChairs);
+        voiceHandler.Say(voiceHandler.menuChairs);
     }
     public void ToggleWardrobeMenu()
     {
@@ -59,7 +59,7 @@ public class MenuManager : MonoBehaviour
         wardrobeMenu.transform.position = chairTransform.position;
         wardrobeMenu.transform.rotation = chairTransform.rotation;
 
-        //voiceHandler.Say(voiceHandler.menuWardrobes);
+        voiceHandler.Say(voiceHandler.menuWardrobes);
     }
 
     private Transform CalculateMenuPosition()
