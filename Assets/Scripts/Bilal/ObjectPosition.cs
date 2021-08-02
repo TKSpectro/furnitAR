@@ -39,9 +39,11 @@ public class ObjectPosition : MonoBehaviour
     float rotationZ, rotationY, rotationX;
     private GameObject ground;
     float menuOffset = 0.2f;
-    float groundOffset = 0.1f;
+    float groundOffset = 0.01f;
     private ManipulationHandFlags Nothing;
     private bool alreadyResized = false;
+
+    Vector3 initalScale;
 
 
 
@@ -51,6 +53,7 @@ public class ObjectPosition : MonoBehaviour
         furnitures = GameObject.Find("Furnitures");
         // Daniel Furniture Selection Menu
 
+        initalScale = transform.localScale;
 
         objectManipulator = gameObject.GetComponent<Microsoft.MixedReality.Toolkit.UI.ObjectManipulator>();
         if (transform.parent.name != "Furnitures")
@@ -190,7 +193,7 @@ public class ObjectPosition : MonoBehaviour
         transform.position = new Vector3(transform.position.x, height + groundOffset, transform.position.z);
         if (!alreadyResized)
         {
-            transform.localScale = new Vector3(transform.localScale.x * 10f, transform.localScale.y * 10f, transform.localScale.z * 10f);
+            transform.localScale = new Vector3(initalScale.x * 8f, initalScale.y * 8f, initalScale.z * 8f);
             alreadyResized = true;
         }
 
