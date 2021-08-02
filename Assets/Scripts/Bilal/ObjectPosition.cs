@@ -145,7 +145,7 @@ public class ObjectPosition : MonoBehaviour
 
     IEnumerator StopHover()
     {
-        yield return new WaitForSecondsRealtime(4);
+        yield return new WaitForSecondsRealtime(8.0f);
         nearMenu.SetActive(false);
         nearMenu.GetComponent<NearMenu>().newItem.SetActive(false);
         hoverEntered = false;
